@@ -11,21 +11,23 @@ export function CustomerPortalButton({ className = "" }: { className?: string })
   const [isPending, startTransition] = useTransition();
 
   const handlePortalClick = useCallback(() => {
-    // Handle the customer portal process
     startTransition(async () => {
       const result = await createCustomerPortalAction();
-      if (result.status === "success" && result.url) {
-        // Redirect to the Stripe customer portal
-        window.location.href = result.url;
+
+      if (result.status === "success" && result.data?.url) {
+        window.location.href = result.data.url;
       } else {
-        // Handle error (could show a toast notification here)
-        console.log("Failed to create customer portal session");
+        console.error("Failed to create customer portal session", result);
       }
     });
   }, []);
 
   return (
-    <Button className={cn("px-4 py-2", className)} disabled={isPending} onClick={handlePortalClick}>
+    <Button
+      className={cn("px-4 py-2", className)}
+      disabled={isPending}
+      onClick={handlePortalClick}
+    >
       {isPending && <Loader className="me-2 size-4 animate-spin" />}
       Manage Subscription
     </Button>
