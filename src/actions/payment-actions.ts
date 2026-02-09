@@ -38,10 +38,7 @@ export async function createCheckoutSessionAction(
     }
 
     const plan = appConfig.stripe.plans.find(
-      (p) =>
-        p.priceId === priceId ||
-        p.monthlyPriceId === priceId ||
-        p.yearlyPriceId === priceId
+      (p) => p.priceId === priceId
     );
 
     if (!plan) {
