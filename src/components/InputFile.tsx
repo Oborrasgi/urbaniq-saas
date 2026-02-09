@@ -31,6 +31,7 @@ export function InputFile({
     try {
       setIsUploading(true);
       const result = await uploadFileToStorage(file);
+
       if (result.status === "success" && result.url) {
         setPreviewUrl(result.url);
         onChange?.(result.url);
