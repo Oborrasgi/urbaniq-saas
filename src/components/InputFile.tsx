@@ -32,9 +32,9 @@ export function InputFile({
       setIsUploading(true);
       const result = await uploadFileToStorage(file);
 
-      if (result.status === "success" && result.fileUrl) {
-        setPreviewUrl(result.fileUrl);
-        onChange?.(result.fileUrl);
+      if (result.status === "success" && result.data?.url) {
+        setPreviewUrl(result.data.url);
+        onChange?.(result.data.url);
       }
     } catch (error) {
       console.error("Error uploading file:", error);
