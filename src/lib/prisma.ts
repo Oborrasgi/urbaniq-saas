@@ -9,7 +9,7 @@ declare global {
 const pool = new Pool({ 
   connectionString: process.env.DATABASE_URL,
   ssl: {
-    rejectUnauthorized: true // Equivalente a verify-full
+    rejectUnauthorized: true
   }
 });
 

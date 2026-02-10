@@ -10,6 +10,7 @@ generator client {
 // ==============================
 datasource db {
   provider = "postgresql"
+  url      = env("DATABASE_URL")  // ← Agrega esta línea
 }
 
 // ==============================
@@ -35,6 +36,8 @@ model User {
 
   @@map("users")
 }
+
+// ... resto de tus modelos
 
 model Account {
   id                String   @id @default(uuid())
