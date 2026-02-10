@@ -10,10 +10,10 @@ import { appConfig } from "@/config";
 import { cn } from "@/lib/utils";
 
 const menuItems = [
-  { name: "Capabilities", href: "#features" },
-  { name: "How it works", href: "#process" },
-  { name: "Plans", href: "#pricing" },
-  { name: "Insights", href: "#gallery" }
+  { name: "Qué hace UrbanIQ", href: "#features" },
+  { name: "Cómo funciona", href: "#process" },
+  { name: "Precios", href: "#pricing" },
+  { name: "Insights IA", href: "#gallery" }
 ];
 
 export function Header() {
@@ -42,7 +42,7 @@ export function Header() {
           <div className="relative flex flex-wrap items-center justify-between gap-6 py-3 lg:gap-0 lg:py-5">
             <div className="flex w-full justify-between lg:w-auto">
               <Link href="/" aria-label="home" className="flex items-center space-x-2">
-                <span className="text-2xl font-bold">UrbanIQ</span>
+                <span className="text-2xl font-bold tracking-tight">UrbanIQ</span>
               </Link>
 
               <button

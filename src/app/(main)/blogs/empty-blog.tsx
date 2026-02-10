@@ -23,16 +23,21 @@ export function EmptyBlog() {
           </svg>
         </div>
 
-        <h2 className="mb-4 text-3xl font-bold">No Blogs Available</h2>
+        <h2 className="mb-4 text-3xl font-bold">
+          Centro de conocimiento en preparación
+        </h2>
+
         <p className="text-muted-foreground mb-8 text-lg">
-          We're working on creating amazing content for you. Check back soon for insightful articles
-          and tutorials.
+          Estamos preparando contenido especializado en derecho inmobiliario,
+          fiscalidad, compraventa y análisis con inteligencia artificial.
+          Muy pronto encontrarás guías prácticas, artículos legales y recursos
+          clave para tomar mejores decisiones.
         </p>
 
         <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
           <Button asChild>
             <Link href="/">
-              Back to Home
+              Volver a la plataforma
               <ArrowRight className="size-4" />
             </Link>
           </Button>

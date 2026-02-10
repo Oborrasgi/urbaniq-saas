@@ -26,15 +26,15 @@ export default function CTA() {
                 className="space-y-4"
               >
                 <h2 className="text-3xl font-bold sm:text-4xl lg:text-5xl">
-                  Start making smarter real estate decisions today
+                  Activa tu ventaja competitiva inmobiliaria con IA
                 </h2>
 
                 <p className="text-muted-foreground text-lg">
-                  Use artificial intelligence to capture leads, value properties, and analyze legal risk — all from a single platform built for real estate professionals.
+                  UrbanIQ identifica propietarios vendedores, valora activos con contexto legal y prioriza oportunidades reales mediante inteligencia artificial diseñada para el sector inmobiliario.
                 </p>
 
                 <Button size="lg" className="mt-8 w-fit">
-                  Request a demo
+                  Solicitar acceso
                 </Button>
               </MotionDiv>
             </div>

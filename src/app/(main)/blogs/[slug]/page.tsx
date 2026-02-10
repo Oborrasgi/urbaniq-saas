@@ -56,7 +56,7 @@ export default async function BlogDetailPage({ params }: BlogDetailProps) {
           className="text-muted-foreground hover:text-foreground inline-flex items-center gap-2 transition-colors"
         >
           <ArrowLeft className="size-4" />
-          Back to Blog
+          Volver al Centro de Conocimiento
         </Link>
       </section>
 
@@ -73,7 +73,7 @@ export default async function BlogDetailPage({ params }: BlogDetailProps) {
           <div className="text-muted-foreground mb-8 flex items-center justify-center gap-4 text-sm">
             <div className="flex items-center gap-2">
               <Calendar className="size-4" />
-              {new Date(blog.createdAt).toLocaleDateString("en-US", {
+              {new Date(blog.createdAt).toLocaleDateString("es-ES", {
                 year: "numeric",
                 month: "long",
                 day: "numeric"
@@ -84,7 +84,7 @@ export default async function BlogDetailPage({ params }: BlogDetailProps) {
 
             <div className="flex items-center gap-2">
               <Clock className="size-4" />
-              {getReadingTime(blog.content)}
+              {"Tiempo de lectura: "}{getReadingTime(blog.content)}
             </div>
           </div>
 
@@ -111,7 +111,7 @@ export default async function BlogDetailPage({ params }: BlogDetailProps) {
           {blog.tags.length > 0 && (
             <div className="mt-12 flex items-center justify-between gap-4 border-t pt-8">
               <div className="flex flex-wrap gap-2">
-                <span className="text-muted-foreground text-sm font-medium">Tags:</span>
+                <span className="text-muted-foreground text-sm font-medium">Etiquetas:</span>
                 {blog.tags.map((tag) => (
                   <Badge key={tag} variant="outline" className="text-xs">
                     {tag}

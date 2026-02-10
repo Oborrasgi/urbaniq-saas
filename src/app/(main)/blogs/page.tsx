@@ -8,8 +8,8 @@ import { createMetadata } from "@/lib/metadata";
 import { EmptyBlog } from "./empty-blog";
 
 export const metadata: Metadata = createMetadata({
-  title: "Blogs | SaasPilot",
-  description: "Explore our complete collection of guides and tutorials",
+  title: "Blog | Urbaniq",
+  description: "Descubra análisis profundos y actualizaciones sobre tecnología legal, inmobiliaria, fiscal y de inteligencia artificial.",
   canonicalUrlRelative: "/blogs"
 });
 
@@ -26,13 +26,11 @@ export default async function BlogPage() {
         <SectionHeader className="py-16 md:py-24">
           <SectionHeader.HeaderContent className="md:pb-0">
             <Badge variant="secondary" className="px-3 py-1">
-              📚 Blog & Resources
+              🏢 Hub de Conocimiento Urbaniq
             </Badge>
-            <SectionHeader.Heading>Insights, Tutorials & Best Practices</SectionHeader.Heading>
+            <SectionHeader.Heading>Perspectivas, Análisis y Buenas Prácticas en LegalTech y PropTech</SectionHeader.Heading>
             <SectionHeader.Text className="text-lg">
-              Stay updated with the latest in SaaS development, from technical guides to business
-              insights. Learn how to build, scale, and grow your applications with industry best
-              practices.
+              Manténgase informado con las últimas tendencias en tecnología legal, inmobiliaria, fiscal y de inteligencia artificial. Aprenda a optimizar y transformar su negocio con soluciones innovadoras y conocimiento experto.
             </SectionHeader.Text>
           </SectionHeader.HeaderContent>
         </SectionHeader>
@@ -40,9 +38,9 @@ export default async function BlogPage() {
 
       <SectionHeader className="pt-0">
         <div className="mb-8 space-y-0.5">
-          <h2 className="text-2xl font-bold">All Articles</h2>
+          <h2 className="text-2xl font-bold">Artículos Especializados</h2>
           <p className="text-muted-foreground">
-            Explore our complete collection of guides and tutorials
+            Explore nuestra colección exclusiva de análisis, guías y estudios en LegalTech, PropTech y más.
           </p>
         </div>
 

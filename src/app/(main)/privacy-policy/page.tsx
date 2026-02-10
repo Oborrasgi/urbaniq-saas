@@ -2,7 +2,7 @@ import { createMetadata } from "@/lib/metadata";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = createMetadata({
-  title: "Privacy Policy | Next.js SaaS Starter Kit Boilerplate",
+  title: "Privacy Policy | Urbaniq SaaS Platform",
   canonicalUrlRelative: "/privacy-policy"
 });
 
@@ -31,77 +31,74 @@ export default function PrivacyPolicy() {
         </p>
 
         <pre className="text-muted-foreground font-sans leading-relaxed whitespace-pre-wrap">
-          {`This Privacy Policy explains how SaasPilot ("we," "us," or "our") collects, uses, and protects your personal and non-personal information when you use our website located at https://saaspilot.com (the “Website”).
+          {`This Privacy Policy describes how Urbaniq ("we," "us," or "our") collects, uses, and safeguards your personal and non-personal information in connection with your use of our SaaS platform accessible via https://urbaniq.com (the “Platform”).
 
-By accessing or using the Website, you consent to the practices described in this Privacy Policy.
+By accessing or using the Platform, you acknowledge and agree to the terms set forth in this Privacy Policy.
 
 1. Information We Collect
 
 1.1 Personal Information
-When you use our Website or purchase our products, we may collect:
+When you register, subscribe, or interact with our Platform, we may collect:
 
-Name – Used to personalize communication and manage your account.
-Email Address – Used for sending updates, order details, and customer support.
-Payment Information – Collected through secure third-party payment processors. We do not store payment information on our servers.
+Full Name – To personalize your experience and manage your account.
+Email Address – For communications including service updates, billing, and support.
+Payment Details – Processed securely through third-party payment gateways; we do not store your payment information on our servers.
 
 1.2 Non-Personal Information
-We collect non-personal data via cookies and similar technologies, including:
+We gather non-identifiable data through cookies and similar technologies, such as:
 
-Browser type
-Device information
+Device and browser type
 IP address
-Usage patterns
+Usage analytics and interaction patterns
 
-This helps us analyze trends, improve our services, and enhance user experience.
+This data helps us optimize service delivery and enhance user experience.
 
-2. How We Use Your Information
-We use the collected data for the following purposes:
+2. Use of Information
+Your information is utilized to:
 
-Processing and fulfilling your orders
-Sending confirmation emails and updates
-Providing customer support
-Improving website performance and service quality
-Communicating important product or policy changes
+Provide and maintain the Platform services
+Process transactions and deliver billing information
+Respond to customer inquiries and support requests
+Improve Platform functionality and security
+Notify users about updates, changes, or important notices
 
-3. Data Sharing and Third Parties
-We do not sell, rent, or trade your personal information.
+3. Disclosure to Third Parties
+We do not sell or lease your personal data. Disclosure is limited to trusted service providers who assist in:
 
-We may share your information only with trusted service providers necessary to:
+Payment processing
+Service delivery and maintenance
+Data analytics and platform improvement
 
-Process payments
-Deliver product updates
-Improve user experience
-
-All third-party partners are required to protect your information and comply with relevant data protection laws.
+All third-party partners are contractually obligated to maintain confidentiality and comply with applicable data protection regulations.
 
 4. Data Security
-We implement appropriate technical and organizational measures to protect your data. Sensitive information is transmitted over secure connections and stored with strong access controls.
+We employ industry-standard security measures, including encryption and access controls, to protect your data against unauthorized access, alteration, or disclosure.
 
 5. Your Rights
-If you are a resident of the EU or a region with similar data laws, you may:
+Depending on your jurisdiction, you may have rights including:
 
-Request access to your personal data
-Request correction or deletion of your data
-Object to or restrict our processing of your data
-Withdraw consent at any time
+Accessing your personal data
+Requesting correction or deletion
+Restricting or objecting to processing
+Withdrawing consent at any time
 
-To exercise these rights, contact us at support@saaspilot.com.
+To exercise these rights, please contact us at privacy@urbaniq.com.
 
-6. Cookies
-Cookies help us personalize your experience and collect anonymous usage data. You can control or disable cookies through your browser settings.
+6. Cookies and Tracking
+Cookies enhance your experience and allow us to collect anonymous usage data. You can manage cookie preferences via your browser settings.
 
 7. Children's Privacy
-The Website is not directed at children under 13. We do not knowingly collect data from children. If you believe your child has provided personal data, contact us to have it removed.
+Our Platform is not intended for individuals under 13 years of age. We do not knowingly collect personal data from children. If you believe we have collected such data, please contact us for removal.
 
-8. Changes to This Policy
-We may update this Privacy Policy to reflect changes in our practices or legal requirements. Updates will be posted here, and users may be notified via email for significant changes.
+8. Changes to This Privacy Policy
+We may update this Privacy Policy periodically to reflect changes in our practices or legal obligations. Updates will be posted on this page, and significant changes may be communicated via email.
 
-9. Contact
-If you have questions or requests related to this Privacy Policy, reach out at:
+9. Contact Information
+For questions or concerns regarding this Privacy Policy, please contact:
 
-Email: support@saaspilot.com
+Email: privacy@urbaniq.com
 
-By using SaasPilot, you agree to the terms outlined in this Privacy Policy.`}
+By using Urbaniq, you consent to the terms outlined in this Privacy Policy.`}
         </pre>
       </div>
     </main>

@@ -11,13 +11,13 @@ const images = [
     id: 1,
     afterImage: "/images/image-13.png",
     beforeImage: "/images/image-13-black.png",
-    alt: "Property analysis before AI"
+    alt: "Valoración inmobiliaria con IA"
   },
   {
     id: 2,
     afterImage: "/images/image-17.png",
     beforeImage: "/images/image-17-black.png",
-    alt: "Property analysis after AI"
+    alt: "Análisis de riesgo legal inmobiliario"
   }
 ];
 
@@ -31,6 +31,7 @@ export default function Demo() {
   return (
     <section className="py-20">
       <div className="container mx-auto max-w-7xl px-4">
+        {/* Header */}
         <MotionDiv
           viewport={{ once: true }}
           initial={{ opacity: 0, y: 20 }}
@@ -38,12 +39,18 @@ export default function Demo() {
           transition={{ duration: 0.6, ease: "easeOut" }}
           className="mx-auto max-w-4xl space-y-3 pb-12 text-center md:pb-16"
         >
-          <h2 className="text-3xl font-bold sm:text-4xl">AI-Powered Property Analysis</h2>
+          <h2 className="text-3xl font-bold sm:text-4xl">
+            Inteligencia inmobiliaria aplicada a decisiones reales
+          </h2>
+
           <p className="text-muted-foreground">
-            Compare real property data enhanced by AI — valuation insights, risk flags, and legal context in seconds.
+            UrbanIQ transforma datos dispersos en ventaja competitiva:
+            valoración avanzada, detección de riesgos legales y análisis accionable
+            en segundos.
           </p>
         </MotionDiv>
 
+        {/* Demo */}
         <div className="mx-auto max-w-5xl">
           <div className="bg-muted dark:bg-card border-border relative overflow-hidden rounded-2xl">
             <div className="relative overflow-hidden rounded-tl-2xl rounded-tr-2xl">
@@ -65,35 +72,36 @@ export default function Demo() {
                 position={50}
               />
 
-              {/* Before/After Labels */}
+              {/* Labels */}
               <div className="absolute top-4 left-4 z-10">
                 <span className="bg-primary rounded-md px-3 py-1 text-sm font-medium text-white">
-                  Raw Data
+                  Datos sin procesar
                 </span>
               </div>
 
               <div className="absolute top-4 right-4 z-10">
                 <span className="bg-primary rounded-md px-3 py-1 text-sm font-medium text-white">
-                  UrbanIQ Insight
+                  Insight UrbanIQ
                 </span>
               </div>
             </div>
 
+            {/* Selector */}
             <div className="flex items-center justify-center gap-4 p-6">
               <SelectImageButton
                 src="/images/image-13.png"
-                alt="AI Generated Landscape 1"
+                alt="Valoración inmobiliaria"
                 index={0}
-                label="Valuation"
+                label="Valoración realista"
                 selectedImageIndex={selectedImageIndex}
                 handleImageClick={handleImageClick}
               />
 
               <SelectImageButton
                 src="/images/image-17.png"
-                alt="AI Generated Portrait 1"
+                alt="Riesgo legal inmobiliario"
                 index={1}
-                label="Legal Risk"
+                label="Riesgo legal"
                 selectedImageIndex={selectedImageIndex}
                 handleImageClick={handleImageClick}
               />
@@ -104,6 +112,10 @@ export default function Demo() {
     </section>
   );
 }
+
+/* ---------------------------------- */
+/* Selector buttons                   */
+/* ---------------------------------- */
 
 function SelectImageButton({
   src,
@@ -125,7 +137,7 @@ function SelectImageButton({
       role="button"
       onClick={() => handleImageClick(index)}
       className={cn(
-        "relative flex h-auto w-20 cursor-pointer flex-col items-center gap-1 rounded-xl p-1",
+        "relative flex h-auto w-24 cursor-pointer flex-col items-center gap-1 rounded-xl p-2 transition",
         selectedImageIndex === index && "bg-primary/10"
       )}
     >
@@ -133,7 +145,12 @@ function SelectImageButton({
         <Image fill src={src} alt={alt} className="object-cover" sizes="100vw" />
       </div>
 
-      <span className={cn("text-xs font-medium", selectedImageIndex === index && "text-primary")}>
+      <span
+        className={cn(
+          "text-xs font-medium",
+          selectedImageIndex === index && "text-primary"
+        )}
+      >
         {label}
       </span>
     </div>

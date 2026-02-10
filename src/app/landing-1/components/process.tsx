@@ -1,50 +1,67 @@
 "use client";
 
-import { useScroll, useTransform } from "motion/react";
-import Image from "next/image";
-import { useRef } from "react";
+import { Check } from "lucide-react";
+import { useState } from "react";
 
-import { MotionDiv } from "@/components/motion-elements";
+import { MotionDiv, MotionSpan } from "@/components/motion-elements";
+import { Button } from "@/components/ui/button";
+import { Switch } from "@/components/ui/switch";
+import { cn } from "@/lib/utils";
 
-import firstPreview from "@/public/images/demo-1.svg";
-import secondPreview from "@/public/images/demo-2.svg";
-import thirdPreview from "@/public/images/demo-3.svg";
-
-const processSteps = [
+const pricingPlans = [
   {
-    number: "01",
-    title: "Captación inteligente",
-    description: "El propietario o inversor interactúa con UrbanIQ. La IA recopila datos del inmueble, contexto legal y señales de intención."
+    name: "Starter",
+    monthlyPrice: 0,
+    yearlyPrice: 0,
+    description: "Para explorar UrbanIQ y entender el valor de la IA inmobiliaria.",
+    features: [
+      "Acceso limitado a IA de captación",
+      "Valoración orientativa (AVM básico)",
+      "Análisis legal simplificado",
+      "1 zona geográfica",
+      "1 análisis activo a la vez",
+      "Soporte comunitario"
+    ],
+    highlighted: false,
+    cta: "Empezar gratis"
   },
   {
-    number: "02",
-    title: "Valoración y análisis legal",
-    description: "Generamos una valoración con rango y confianza, junto con un primer análisis jurídico y urbanístico automatizado."
+    name: "Pro",
+    monthlyPrice: 59,
+    yearlyPrice: 590,
+    description: "Para agentes e inversores que necesitan decisiones fiables.",
+    features: [
+      "IA avanzada de captación de propietarios",
+      "Valoración AVM con rango y nivel de confianza",
+      "Análisis legal automatizado",
+      "Historial y scoring inteligente de leads",
+      "Hasta 5 zonas geográficas"
+    ],
+    highlighted: true,
+    cta: "Activar UrbanIQ Pro"
   },
   {
-    number: "03",
-    title: "Scoring y priorización",
-    description: "UrbanIQ calcula el Property Health Score y la probabilidad de venta para priorizar oportunidades reales."
-  },
-  {
-    number: "04",
-    title: "Activación y distribución",
-    description: "El lead se activa con acciones recomendadas o se distribuye a partners verificados bajo SLA y exclusividad."
+    name: "Business",
+    monthlyPrice: 129,
+    yearlyPrice: 1290,
+    description: "Para equipos inmobiliarios y despachos profesionales.",
+    features: [
+      "Todo lo incluido en Pro",
+      "Predicción de intención de venta (30–180 días)",
+      "Distribución de leads con exclusividad",
+      "Panel multiusuario y roles",
+      "Integraciones avanzadas y API"
+    ],
+    highlighted: false,
+    cta: "Hablar con ventas"
   }
 ];
 
-export default function Process() {
-  const listContainerRef = useRef<HTMLDivElement>(null);
-
-  const { scrollYProgress } = useScroll({
-    target: listContainerRef,
-    offset: ["start 0.9", "end 0.6"]
-  });
-
-  const lineHeight = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
+export default function Pricing() {
+  const [isYearly, setIsYearly] = useState(false);
 
   return (
-    <section id="process" className="py-14 md:py-20">
+    <section id="pricing" className="py-14 md:py-20">
       <div className="container mx-auto max-w-7xl">
         <MotionDiv
           viewport={{ once: true }}
@@ -53,98 +70,129 @@ export default function Process() {
           transition={{ duration: 0.6, ease: "easeOut" }}
           className="mx-auto max-w-4xl space-y-3 pb-12 text-center md:pb-16"
         >
-          <h3 className="text-3xl font-bold sm:text-4xl">Cómo funciona UrbanIQ</h3>
+          <h3 className="text-3xl font-bold sm:text-4xl">
+            Planes diseñados para el sector inmobiliario
+          </h3>
+
           <p className="text-muted-foreground">
-            Un flujo claro para captar, analizar y decidir con inteligencia artificial inmobiliaria.
+            Escala desde validación inicial hasta operaciones profesionales con IA.
           </p>
+
+          <div className="flex items-center justify-center gap-3 pt-6">
+            <span
+              className={cn(
+                "text-sm font-medium transition-colors",
+                !isYearly ? "text-foreground" : "text-muted-foreground"
+              )}
+            >
+              Mensual
+            </span>
+
+            <Switch
+              checked={isYearly}
+              onCheckedChange={setIsYearly}
+              className="h-5 w-9 **:data-[slot=switch-thumb]:data-[state=checked]:translate-x-[calc(100%+1px)] **:data-[slot=switch-thumb]:data-[state=unchecked]:translate-x-0.5"
+            />
+
+            <span
+              className={cn(
+                "text-sm font-medium transition-colors",
+                isYearly ? "text-foreground" : "text-muted-foreground"
+              )}
+            >
+              Anual <span className="text-primary">(–2 meses)</span>
+            </span>
+          </div>
         </MotionDiv>
 
-        <div className="dark:bg-muted/20 bg-muted relative overflow-hidden rounded-3xl p-8 md:p-12 lg:p-14">
-          <div className="flex flex-col gap-12 lg:flex-row lg:gap-[140px]">
-            <div ref={listContainerRef} className="relative flex flex-col gap-8">
-              <MotionDiv
-                viewport={{ once: true }}
-                initial={{ opacity: 0, y: 20, filter: "blur(6px)" }}
-                whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-                transition={{ duration: 0.3, ease: "easeInOut" }}
-                className="absolute top-6 left-6 h-[calc(100%-125px)] w-1 -translate-x-1/2"
-              >
-                <div className="h-full w-full rounded-full bg-black/10 dark:bg-white/10" />
+        <div className="grid gap-6 md:grid-cols-3">
+          {pricingPlans.map((plan, index) => (
+            <MotionDiv
+              key={plan.name}
+              viewport={{ once: true }}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{
+                duration: 0.5,
+                ease: "easeOut",
+                delay: index * 0.1
+              }}
+              className={cn(
+                "relative rounded-2xl border p-6 shadow-sm transition-shadow hover:shadow-md",
+                plan.highlighted
+                  ? "border-primary from-primary/10 to-primary/5 bg-linear-to-br"
+                  : "bg-card"
+              )}
+            >
+              {plan.highlighted && (
+                <div className="absolute -top-3 left-1/2 -translate-x-1/2">
+                  <span className="bg-primary text-primary-foreground rounded-full px-3 py-1 text-xs font-medium">
+                    Más elegido
+                  </span>
+                </div>
+              )}
 
-                <MotionDiv
-                  style={{ height: lineHeight }}
-                  className="bg-primary absolute inset-x-0 top-0 origin-top rounded-full"
-                />
-              </MotionDiv>
+              <div className="space-y-5">
+                <div className="space-y-3">
+                  <h4 className="text-xl font-semibold">{plan.name}</h4>
 
-              {processSteps.map((step, index) => (
-                <MotionDiv
-                  viewport={{ once: true }}
-                  initial={{ opacity: 0, y: 10, filter: "blur(6px)" }}
-                  whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-                  transition={{ duration: 0.3, ease: "easeInOut", delay: index * 0.1 }}
-                  key={step.number}
-                  className="flex items-start gap-6"
-                >
-                  <div className="bg-primary z-10 flex size-12 shrink-0 items-center justify-center rounded-full text-xl font-bold tracking-tight text-white">
-                    {step.number}
+                  <div className="flex items-baseline gap-1">
+                    <MotionSpan
+                      key={isYearly ? "yearly" : "monthly"}
+                      initial={{ opacity: 0, y: -10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.2, ease: "easeOut" }}
+                      className="text-4xl font-bold"
+                    >
+                      €{isYearly ? plan.yearlyPrice : plan.monthlyPrice}
+                    </MotionSpan>
+
+                    <MotionSpan
+                      key={isYearly ? "year" : "month"}
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ duration: 0.2, ease: "easeOut", delay: 0.1 }}
+                      className="text-muted-foreground text-base"
+                    >
+                      /{isYearly ? "año" : "mes"}
+                    </MotionSpan>
                   </div>
 
-                  <div className="flex max-w-[390px] flex-col gap-1">
-                    <h5 className="text-xl leading-loose font-medium">{step.title}</h5>
-                    <p className="text-muted-foreground">{step.description}</p>
-                  </div>
-                </MotionDiv>
-              ))}
-            </div>
+                  <p className="text-muted-foreground text-sm">
+                    {plan.description}
+                  </p>
+                </div>
 
-            <div className="space-y-1">
-              <div className="flex h-min w-full items-end gap-1">
-                <MotionDiv
-                  viewport={{ once: true }}
-                  initial={{ opacity: 0, x: -20, scale: 1.05 }}
-                  whileInView={{ opacity: 1, x: 0, scale: 1 }}
-                  transition={{ duration: 0.7, ease: "easeInOut", delay: 0.2 }}
-                  className="relative size-full"
+                <Button
+                  className={cn(
+                    "w-full",
+                    plan.highlighted
+                      ? "bg-primary text-primary-foreground hover:bg-primary/90"
+                      : "bg-primary/10 text-primary hover:bg-primary/20"
+                  )}
                 >
-                  <Image
-                    src={firstPreview}
-                    alt="UrbanIQ dashboard overview"
-                    className="size-full object-cover"
-                  />
-                </MotionDiv>
+                  {plan.cta}
+                </Button>
 
-                <MotionDiv
-                  viewport={{ once: true }}
-                  initial={{ opacity: 0, x: 20, scale: 1.05 }}
-                  whileInView={{ opacity: 1, x: 0, scale: 1 }}
-                  transition={{ duration: 0.7, ease: "easeInOut", delay: 0.2 }}
-                  className="relative size-full"
-                >
-                  <Image
-                    src={secondPreview}
-                    alt="UrbanIQ valuation and legal analysis"
-                    className="size-full object-cover"
-                  />
-                </MotionDiv>
+                <div className="space-y-5 pt-4">
+                  {plan.features.map((feature, featureIndex) => (
+                    <div key={featureIndex} className="flex items-start gap-3">
+                      <Check className="text-primary mt-0.5 size-4 shrink-0" />
+                      <span className="text-muted-foreground text-sm">
+                        {feature}
+                      </span>
+                    </div>
+                  ))}
+                </div>
               </div>
-
-              <MotionDiv
-                viewport={{ once: true }}
-                initial={{ opacity: 0, y: 30, scale: 1.05 }}
-                whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                transition={{ delay: 0.2, duration: 0.7, ease: "easeInOut" }}
-                className="flex items-center ps-10"
-              >
-                <Image
-                  src={thirdPreview}
-                  alt="UrbanIQ lead scoring and activation"
-                  className="h-full w-full object-cover"
-                />
-              </MotionDiv>
-            </div>
-          </div>
+            </MotionDiv>
+          ))}
         </div>
+
+        <p className="text-muted-foreground mt-10 text-center text-sm">
+          UrbanIQ no es una agencia inmobiliaria. No vendemos inmuebles — proporcionamos inteligencia
+          para tomar mejores decisiones.
+        </p>
       </div>
     </section>
   );

@@ -30,8 +30,8 @@ export function PurchaseButton({
     startTransition(async () => {
       const result = await createCheckoutSessionAction(priceId);
 
-      if (result.status === "success" && result.url) {
-        window.location.href = result.url; // Redirect to the stripe checkout page
+      if (result.status === "success" && result.data?.url) {
+        window.location.href = result.data.url;
       } else {
         const message = result.message || "Failed to create checkout session";
         toast.error(message);

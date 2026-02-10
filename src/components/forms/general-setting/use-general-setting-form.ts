@@ -42,10 +42,13 @@ export function useGeneralSettingForm({ user }: { user: User }) {
       // Replace the old image with the new one
       const result = await uploadFileToStorage(file);
 
-      if (result.status === "success") {
-        setValue("image", result.url);
-      } else {
-        toast.error(result.message || "Error while uploading avatar");
+      if (result.status === "success" && result.data?.url) {
+        setValue("image", result.data.url);
+        setAvatarPreview(result.data.url);
+      }
+      
+      if (result.status === "error") {
+        toast.error(result.message);
       }
     } catch (error) {
       console.error("Error uploading file:", error);

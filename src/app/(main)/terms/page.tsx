@@ -2,7 +2,7 @@ import { createMetadata } from "@/lib/metadata";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = createMetadata({
-  title: "Terms of Service | Next.js SaaS Starter Kit Boilerplate",
+  title: "Terms of Service | Urbaniq SaaS Platform",
   canonicalUrlRelative: "/terms"
 });
 
@@ -31,57 +31,44 @@ export default function Terms() {
         </p>
 
         <pre className="text-muted-foreground font-sans leading-relaxed whitespace-pre-wrap">
-          {`Thank you for visiting SaasPilot ("we," "us," or "our"). This Terms of Service outlines how we collect, use, and protect your personal and non-personal information when you use our website located at https://saaspilot.com (the "Website").
+          {`Welcome to Urbaniq ("we," "us," or "our"). These Terms of Service govern your use of our SaaS platform, accessible via https://urbaniq.com (the "Platform"). By accessing or using the Platform, you agree to these Terms. Please read them carefully.
 
-By accessing or using the Website, you agree to these Terms of Service. If you do not agree, please do not use the Website.
+1. Acceptance of Terms
+By registering for or using the Platform, you agree to comply with and be bound by these Terms, as well as any additional guidelines or rules posted on the Platform.
 
-1. Information We Collect
+2. Description of Service
+Urbaniq provides a cloud-based software solution designed to assist real estate and legal professionals in managing transactions, documentation, and compliance processes efficiently.
 
-1.1 Personal Information
-We collect the following types of personal data:
+3. User Accounts
+To access certain features, you must create an account and provide accurate, complete information. You are responsible for maintaining the confidentiality of your login credentials and for all activities under your account.
 
-Name – Used to personalize your experience and for communication.
-Email Address – Used for updates, order confirmations, and communication.
-Payment Details – Collected to process your purchases securely. Note: We do not store payment data. All transactions are processed through secure third-party providers.
+4. Subscriptions & Payments
+Access to the Platform may require a subscription. Payment terms, billing cycles, and refund policies are detailed in your subscription agreement. Failure to pay may result in suspension or termination of your access.
 
-1.2 Non-Personal Information
-We may collect non-personal data using cookies and similar technologies. This may include:
-IP address
-Browser type
-Device data
-Browsing behavior
+5. Use of the Platform
+You agree to use the Platform only for lawful purposes and in accordance with these Terms. Prohibited activities include unauthorized access, data mining, reverse engineering, or any action that disrupts the Platform’s operation.
 
-This helps us improve site performance, analyze usage trends, and enhance user experience.
+6. Intellectual Property
+All content, software, trademarks, and technology on the Platform are the property of Urbaniq or its licensors. You are granted a limited, non-exclusive license to use the Platform in accordance with these Terms.
 
-2. How We Use Your Data
-We use your information strictly for the following purposes:
+7. Limitation of Liability
+To the maximum extent permitted by law, Urbaniq shall not be liable for any indirect, incidental, special, consequential, or punitive damages arising out of your use or inability to use the Platform. Our total liability is limited to the amount paid by you for the subscription during the twelve months preceding the claim.
 
-Fulfilling and managing your orders
-Sending order confirmations and updates
-Providing customer support
-Improving our services and communication
+8. Termination
+We may suspend or terminate your access at any time for violations of these Terms or for other legitimate reasons. Upon termination, your right to use the Platform ceases immediately.
 
-3. Data Sharing Policy
-We do not sell, rent, or trade your personal information.
+9. Governing Law
+These Terms shall be governed by and construed in accordance with the laws of the European Union and Spain, without regard to conflict of law principles.
 
-Your data may be shared only with trusted third parties for the purpose of order processing (e.g., payment processors).
+10. Changes to Terms
+We reserve the right to update these Terms periodically. Changes will be posted on this page with an updated effective date. Continued use of the Platform after changes constitutes acceptance.
 
-4. Children's Privacy
-The Website is not intended for children under 13 years of age.
+11. Contact
+For any questions or concerns regarding these Terms, please contact us at:
 
-We do not knowingly collect personal data from children. If you believe your child has submitted information to us, please contact us immediately.
+Email: legal@urbaniq.com
 
-5. Changes to This Policy
-We may update these Terms of Service periodically. Changes will be posted on this page. For significant updates, we may notify you by email.
-
-6. Contact Us
-For questions, concerns, or requests related to this Terms of Service:
-
-Email: support@saaspilot.com
-For other inquiries, please visit the Contact Us page on our Website.
-
-By using SaasPilot acknowledge and agree to the terms outlined in this document.
-
+Thank you for choosing Urbaniq. We are committed to providing you with a secure and efficient platform to support your real estate and legal technology needs.
 `}
         </pre>
       </div>
