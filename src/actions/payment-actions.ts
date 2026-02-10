@@ -1,31 +1,129 @@
-import React, { useState } from "react";
+"use server";
 
-interface ArchivoDeEntradaProps {
-  onChange?: (url: string) => void;
+import Stripe from "stripe";
+
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
+  apiVersion: "2024-04-10",
+});
+
+export async function createCheckoutSessionAction(priceId: string) {
+  try {
+    const session = await stripe.checkout.sessions.create({
+      mode: "subscription",
+      payment_method_types: ["card"],
+      line_items: [
+        {
+          price: priceId,
+          quantity: 1,
+        },
+      ],
+      success_url: `${process.env.AUTH_URL}/success`,
+      cancel_url: `${process.env.AUTH_URL}/pricing`,
+    });
+
+    return { url: session.url };
+  } catch (error) {
+    console.error("Stripe error:", error);
+    throw new Error("No se pudo crear la sesión de pago");
+  }
 }
 
-export function ArchivoDeEntrada({ onChange }: ArchivoDeEntradaProps) {
-  const [previewUrl, setPreviewUrl] = useState<string>("");
+/* ⬇️ puedes dejar esto también si lo usas */
+export async function uploadFileToStorage(file: File) {
+  if (!file) return { estado: "error" };
 
-  async function handleFileChange(event: React.ChangeEvent<HTMLInputElement>) {
-    const file = event.target.files?.[0];
-    if (!file) return;
+  return {
+    estado: "exito",
+    fileUrl: `/uploads/${file.name}`,
+  };
+}
+"use server";
 
-    const resultado = await uploadFileToStorage(file);
+import Stripe from "stripe";
+import { getCurrentUser } from "@/lib/auth";
 
-    if (resultado.estado === "exito" && resultado.fileUrl) {
-      setPreviewUrl(resultado.fileUrl);
-      onChange?.(resultado.fileUrl);
-    } else if (resultado.estado === "exito" && resultado.path) {
-      setPreviewUrl(resultado.path);
-      onChange?.(resultado.path);
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
+  apiVersion: "2024-04-10",
+});
+
+/* ==========================================================================
+ * Types
+ * ========================================================================== */
+type ActionResult<T = undefined> =
+  | { status: "success"; data: T }
+  | { status: "error"; message: string };
+
+/* ==========================================================================
+ * Create Stripe Checkout Session
+ * ========================================================================== */
+export async function createCheckoutSessionAction(
+  priceId: string
+): Promise<ActionResult<{ url: string }>> {
+  try {
+    const currentUser = await getCurrentUser();
+
+    if (!currentUser || !currentUser.email) {
+      return { status: "error", message: "UNAUTHORIZED" };
     }
-  }
 
-  return (
-    <div>
-      <input type="file" onChange={handleFileChange} />
-      {previewUrl && <img src={previewUrl} alt="Preview" />}
-    </div>
-  );
+    const session = await stripe.checkout.sessions.create({
+      mode: "subscription",
+      payment_method_types: ["card"],
+      customer_email: currentUser.email,
+      line_items: [
+        {
+          price: priceId,
+          quantity: 1,
+        },
+      ],
+      success_url: `${process.env.AUTH_URL}/dashboard`,
+      cancel_url: `${process.env.AUTH_URL}/pricing`,
+    });
+
+    if (!session.url) {
+      return { status: "error", message: "STRIPE_CHECKOUT_FAILED" };
+    }
+
+    return {
+      status: "success",
+      data: { url: session.url },
+    };
+  } catch (error) {
+    console.error("[STRIPE_CHECKOUT_ERROR]", error);
+    return {
+      status: "error",
+      message: "STRIPE_CHECKOUT_ERROR",
+    };
+  }
+}
+
+/* ==========================================================================
+ * Create Stripe Customer Portal Session
+ * ========================================================================== */
+export async function createCustomerPortalAction(): Promise<
+  ActionResult<{ url: string }>
+> {
+  try {
+    const currentUser = await getCurrentUser();
+
+    if (!currentUser || !currentUser.customerId) {
+      return { status: "error", message: "NO_STRIPE_CUSTOMER" };
+    }
+
+    const portalSession = await stripe.billingPortal.sessions.create({
+      customer: currentUser.customerId,
+      return_url: `${process.env.AUTH_URL}/dashboard`,
+    });
+
+    return {
+      status: "success",
+      data: { url: portalSession.url },
+    };
+  } catch (error) {
+    console.error("[STRIPE_PORTAL_ERROR]", error);
+    return {
+      status: "error",
+      message: "STRIPE_PORTAL_ERROR",
+    };
+  }
 }
