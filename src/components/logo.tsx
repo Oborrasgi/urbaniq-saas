@@ -10,13 +10,13 @@ export default function Logo() {
       <Image
         src="/logo.png"
         alt="UrbanIQ Logo"
-        width={48}
-        height={48}
+        width={64}
+        height={64}
         priority
         className="object-contain"
       />
 
-      <span className="text-[26px] font-semibold tracking-[-0.02em]">
+      <span className="text-[28px] font-semibold tracking-[-0.02em]">
         Urban<span className="text-primary font-bold">IQ</span>
       </span>
     </Link>
