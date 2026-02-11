@@ -27,7 +27,7 @@ const plans: Plan[] = [
   {
     recommended: false,
     title: "Starter",
-    price: 0,
+    price: 30,
     priceId: appConfig.stripe.plans[0].priceId,
     description: "Para explorar UrbanIQ y validar oportunidades inmobiliarias.",
     priceTagline: "mes",
@@ -45,7 +45,7 @@ const plans: Plan[] = [
   {
     recommended: true,
     title: "Pro",
-    price: 59,
+    price: 80,
     priceId: appConfig.stripe.plans[1].priceId,
     description: "Para agentes e inversores que necesitan decisiones fiables.",
     priceTagline: "mes",
@@ -63,7 +63,7 @@ const plans: Plan[] = [
   {
     recommended: false,
     title: "Business",
-    price: 129,
+    price: 200,
     priceId: appConfig.stripe.plans[2].priceId,
     description: "Para equipos inmobiliarios y despachos profesionales.",
     priceTagline: "mes",
