@@ -1,5 +1,6 @@
 import { appConfig } from "@/config";
 import { User } from "@/types/user";
+import { Role } from "@prisma/client";
 
 export const users: User[] = [
   {
@@ -15,7 +16,7 @@ export const users: User[] = [
     customerId: "cus_001a",
     priceId: "price_basic",
     credits: appConfig.defaultCredits,
-    role: "USER"
+    role: Role.USER
   },
   {
     id: "2",
@@ -30,7 +31,7 @@ export const users: User[] = [
     customerId: "cus_002b",
     priceId: "price_pro",
     credits: appConfig.defaultCredits,
-    role: "USER"
+    role: Role.USER
   },
   {
     id: "3",
@@ -45,7 +46,7 @@ export const users: User[] = [
     customerId: "cus_003c",
     priceId: "price_enterprise",
     credits: appConfig.defaultCredits,
-    role: "ADMIN"
+    role: Role.ADMIN
   },
   {
     id: "4",
@@ -60,7 +61,7 @@ export const users: User[] = [
     customerId: "cus_004d",
     priceId: "price_basic",
     credits: appConfig.defaultCredits,
-    role: "USER"
+    role: Role.USER
   },
   {
     id: "5",
@@ -75,7 +76,7 @@ export const users: User[] = [
     customerId: null,
     priceId: null,
     credits: appConfig.defaultCredits,
-    role: "USER"
+    role: Role.USER
   },
   {
     id: "6",
@@ -90,7 +91,7 @@ export const users: User[] = [
     customerId: "cus_005e",
     priceId: "price_pro",
     credits: appConfig.defaultCredits,
-    role: "USER"
+    role: Role.USER
   },
   {
     id: "7",
@@ -105,7 +106,7 @@ export const users: User[] = [
     customerId: "cus_006f",
     priceId: "price_enterprise",
     credits: appConfig.defaultCredits,
-    role: "ADMIN"
+    role: Role.ADMIN
   },
   {
     id: "8",
@@ -120,7 +121,7 @@ export const users: User[] = [
     customerId: "cus_007g",
     priceId: "price_basic",
     credits: appConfig.defaultCredits,
-    role: "USER"
+    role: Role.USER
   },
   {
     id: "9",
@@ -135,7 +136,7 @@ export const users: User[] = [
     customerId: null,
     priceId: null,
     credits: appConfig.defaultCredits,
-    role: "USER"
+    role: Role.USER
   },
   {
     id: "10",
@@ -150,7 +151,7 @@ export const users: User[] = [
     customerId: "cus_008h",
     priceId: "price_pro",
     credits: appConfig.defaultCredits,
-    role: "USER"
+    role: Role.USER
   },
   {
     id: "11",
@@ -165,7 +166,7 @@ export const users: User[] = [
     customerId: "cus_009i",
     priceId: "price_basic",
     credits: appConfig.defaultCredits,
-    role: "USER"
+    role: Role.USER
   },
   {
     id: "12",
@@ -175,11 +176,11 @@ export const users: User[] = [
     createdAt: new Date("2024-05-10T13:15:00Z"),
     subscribedAt: null,
     emailVerified: null,
-    isAdmin: false,
     image: "https://randomuser.me/api/portraits/men/12.jpg",
     customerId: null,
     priceId: null,
-    credits: appConfig.defaultCredits
+    credits: appConfig.defaultCredits,
+    role: Role.USER
   },
   {
     id: "13",
@@ -194,7 +195,7 @@ export const users: User[] = [
     customerId: "cus_010j",
     priceId: "price_enterprise",
     credits: appConfig.defaultCredits,
-    role: "ADMIN"
+    role: Role.ADMIN
   },
   {
     id: "14",
@@ -209,7 +210,7 @@ export const users: User[] = [
     customerId: "cus_011k",
     priceId: "price_pro",
     credits: appConfig.defaultCredits,
-    role: "USER"
+    role: Role.USER
   },
   {
     id: "15",
@@ -224,7 +225,7 @@ export const users: User[] = [
     customerId: null,
     priceId: null,
     credits: appConfig.defaultCredits,
-    role: "USER"
+    role: Role.USER
   },
   {
     id: "16",
@@ -239,7 +240,7 @@ export const users: User[] = [
     customerId: "cus_012l",
     priceId: "price_basic",
     credits: appConfig.defaultCredits,
-    role: "USER"
+    role: Role.USER
   },
   {
     id: "17",
@@ -254,7 +255,7 @@ export const users: User[] = [
     customerId: "cus_013m",
     priceId: "price_enterprise",
     credits: appConfig.defaultCredits,
-    role: "ADMIN"
+    role: Role.ADMIN
   },
   {
     id: "18",
@@ -269,7 +270,7 @@ export const users: User[] = [
     customerId: "cus_014n",
     priceId: "price_pro",
     credits: appConfig.defaultCredits,
-    role: "USER"
+    role: Role.USER
   },
   {
     id: "19",
@@ -284,7 +285,7 @@ export const users: User[] = [
     customerId: null,
     priceId: null,
     credits: appConfig.defaultCredits,
-    role: "USER"
+    role: Role.USER
   },
   {
     id: "20",
@@ -299,6 +300,6 @@ export const users: User[] = [
     customerId: "cus_015o",
     priceId: "price_basic",
     credits: appConfig.defaultCredits,
-    role: "USER"
+    role: Role.USER
   }
 ];
