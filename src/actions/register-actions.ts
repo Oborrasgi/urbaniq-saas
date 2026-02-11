@@ -3,6 +3,7 @@
 import { appConfig } from "@/config";
 import { hashPassword } from "@/lib/password";
 import { prisma } from "@/lib/prisma";
+import { Role } from "@prisma/client";
 import { registerSchema, RegisterSchema } from "@/lib/zod-schemas";
 
 type AuthRegisterResult =
@@ -47,7 +48,7 @@ export async function authRegisterAction(data: RegisterSchema): Promise<AuthRegi
         email,
         password: hashedPassword,
         credits: appConfig.defaultCredits,
-        role: "USER",
+        role: Role.USER,
         // Optional: Add tenantId here if multi-tenant
         // tenantId,
         // Optional: Add email verification status or token here
