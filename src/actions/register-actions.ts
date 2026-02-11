@@ -47,6 +47,7 @@ export async function authRegisterAction(data: RegisterSchema): Promise<AuthRegi
         email,
         password: hashedPassword,
         credits: appConfig.defaultCredits,
+        role: "USER",
         // Optional: Add tenantId here if multi-tenant
         // tenantId,
         // Optional: Add email verification status or token here
