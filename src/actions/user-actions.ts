@@ -15,7 +15,7 @@ export async function getUsers(): Promise<User[]> {
   }
 
   // 🔒 Activar cuando quieras control admin
-  // if (!currentUser.isAdmin) {
+  // if (currentUser.role !== "ADMIN") {
   //   throw new Error("Unauthorized");
   // }
 
@@ -28,7 +28,7 @@ export async function getUsers(): Promise<User[]> {
         email: true,
         image: true,
         credits: true,
-        isAdmin: true,
+        role: true,
         hasAccess: true,
         createdAt: true
       }
@@ -54,7 +54,7 @@ export async function deleteUser(
   }
 
   // 🔒 Activar cuando quieras control admin
-  // if (!currentUser.isAdmin) {
+  // if (currentUser.role !== "ADMIN") {
   //   return { success: false, error: "Unauthorized" };
   // }
 

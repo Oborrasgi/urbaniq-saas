@@ -46,15 +46,15 @@ export default function Hero() {
         </MotionH1>
 
         <MotionParagraph
-          initial={{ opacity: 0, y: 15 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.3, delay: 0.2 }}
-          className="text-muted-foreground mb-8 max-w-2xl text-sm md:text-base leading-relaxed"
-        >
-          Analyze property value, detect legal risks, and prioritize high-intent sellers in seconds.
-          UrbanIQ combines artificial intelligence, market data, and legal intelligence into one
-          decision engine built for real estate professionals.
-        </MotionParagraph>
+  initial={{ opacity: 0, y: 15 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.3, delay: 0.2 }}
+  className="text-muted-foreground mb-8 max-w-2xl text-sm md:text-base leading-relaxed"
+>
+  Analiza el valor de los activos, detecta riesgos legales y prioriza propietarios con alta intención de venta en segundos.
+  UrbanIQ integra inteligencia artificial, datos de mercado y análisis jurídico en un único motor de decisión
+  diseñado para profesionales del sector inmobiliario.
+</MotionParagraph>
 
         <MotionDiv
           initial={{ opacity: 0, y: 15 }}
