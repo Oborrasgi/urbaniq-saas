@@ -1,4 +1,4 @@
-import { BookOpen, Zap } from "lucide-react";
+import { Zap } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -18,7 +18,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 5 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.3 }}
-          className="mb-3 flex justify-center"
+          className="mb-8 flex justify-center"
         >
           <Link
             className="text-foreground bg-primary/5 border-primary/20 hover:bg-primary/10 flex items-center gap-2 truncate rounded-full border px-1 py-1 pr-3 text-left text-xs transition-colors"
@@ -35,12 +35,12 @@ export default function Hero() {
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.3, delay: 0.1 }}
-          className="mb-6 text-4xl leading-[1.08] font-semibold tracking-tight sm:text-5xl md:text-6xl lg:text-[64px]"
+          className="mb-8 text-4xl leading-[1.05] font-semibold tracking-[-0.02em] sm:text-5xl md:text-6xl lg:text-[64px]"
         >
           <span className="block">
             UrbanIQ
           </span>
-          <span className="block mt-1 text-foreground/90 font-medium">
+          <span className="block mt-2 text-white font-light tracking-tight">
             AI‑powered real estate intelligence
           </span>
         </MotionH1>
@@ -62,19 +62,6 @@ export default function Hero() {
           transition={{ duration: 0.3, delay: 0.3 }}
           className="flex flex-col justify-center gap-4 sm:flex-row"
         >
-          <Link target="_blank" href="https://saas-pilot-docs.vercel.app" passHref>
-            <Button
-              variant="secondary"
-              className="group w-full px-8! py-6 text-base font-semibold transition-all duration-300 hover:shadow-lg sm:w-auto"
-            >
-              <BookOpen
-                strokeWidth={2}
-                className="size-4 transition-transform duration-300 group-hover:scale-110"
-              />
-              Platform Overview
-            </Button>
-          </Link>
-
           <Link href="#pricing" passHref>
             <Button className="group from-primary hover:from-primary w-full bg-linear-to-r to-purple-600 px-8! py-6 text-base font-semibold shadow-lg transition-all duration-300 hover:to-purple-700 hover:shadow-xl sm:w-auto">
               <Zap
