@@ -68,7 +68,7 @@ export default function Hero() {
                 strokeWidth={2}
                 className="size-4 transition-transform duration-300 group-hover:scale-110"
               />
-              Request Demo
+              Acceso a una demo
             </Button>
           </Link>
         </MotionDiv>
