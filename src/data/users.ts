@@ -10,11 +10,12 @@ export const users: User[] = [
     createdAt: new Date("2023-12-01T10:45:00Z"),
     subscribedAt: new Date("2024-01-15T08:00:00Z"),
     emailVerified: new Date("2023-12-01T10:45:00Z"),
-    isAdmin: false,
+    
     image: "https://randomuser.me/api/portraits/women/1.jpg",
     customerId: "cus_001a",
     priceId: "price_basic",
-    credits: appConfig.defaultCredits
+    credits: appConfig.defaultCredits,
+    role: "USER"
   },
   {
     id: "2",
@@ -24,11 +25,12 @@ export const users: User[] = [
     createdAt: new Date("2024-02-12T12:20:00Z"),
     subscribedAt: new Date("2024-02-15T09:00:00Z"),
     emailVerified: new Date("2024-02-12T12:20:00Z"),
-    isAdmin: false,
+    
     image: "https://randomuser.me/api/portraits/men/2.jpg",
     customerId: "cus_002b",
     priceId: "price_pro",
-    credits: appConfig.defaultCredits
+    credits: appConfig.defaultCredits,
+    role: "USER"
   },
   {
     id: "3",
@@ -38,11 +40,12 @@ export const users: User[] = [
     createdAt: new Date("2024-03-10T14:30:00Z"),
     subscribedAt: new Date("2024-03-12T11:15:00Z"),
     emailVerified: new Date("2024-03-10T14:30:00Z"),
-    isAdmin: true,
+    
     image: "https://randomuser.me/api/portraits/women/3.jpg",
     customerId: "cus_003c",
     priceId: "price_enterprise",
-    credits: appConfig.defaultCredits
+    credits: appConfig.defaultCredits,
+    role: "ADMIN"
   },
   {
     id: "4",
@@ -52,11 +55,12 @@ export const users: User[] = [
     createdAt: new Date("2024-04-05T16:45:00Z"),
     subscribedAt: new Date("2024-04-07T13:00:00Z"),
     emailVerified: new Date("2024-04-05T16:45:00Z"),
-    isAdmin: false,
+    
     image: "https://randomuser.me/api/portraits/men/4.jpg",
     customerId: "cus_004d",
     priceId: "price_basic",
-    credits: appConfig.defaultCredits
+    credits: appConfig.defaultCredits,
+    role: "USER"
   },
   {
     id: "5",
@@ -66,11 +70,12 @@ export const users: User[] = [
     createdAt: new Date("2024-05-01T09:20:00Z"),
     subscribedAt: null,
     emailVerified: null,
-    isAdmin: false,
+    
     image: "https://randomuser.me/api/portraits/women/5.jpg",
     customerId: null,
     priceId: null,
-    credits: appConfig.defaultCredits
+    credits: appConfig.defaultCredits,
+    role: "USER"
   },
   {
     id: "6",
@@ -80,11 +85,12 @@ export const users: User[] = [
     createdAt: new Date("2024-03-20T11:00:00Z"),
     subscribedAt: new Date("2024-03-22T10:00:00Z"),
     emailVerified: new Date("2024-03-20T11:00:00Z"),
-    isAdmin: false,
+    
     image: "https://randomuser.me/api/portraits/men/6.jpg",
     customerId: "cus_005e",
     priceId: "price_pro",
-    credits: appConfig.defaultCredits
+    credits: appConfig.defaultCredits,
+    role: "USER"
   },
   {
     id: "7",
@@ -94,11 +100,12 @@ export const users: User[] = [
     createdAt: new Date("2024-06-18T18:00:00Z"),
     subscribedAt: new Date("2024-06-20T12:30:00Z"),
     emailVerified: new Date("2024-06-18T18:00:00Z"),
-    isAdmin: true,
+    
     image: "https://randomuser.me/api/portraits/women/7.jpg",
     customerId: "cus_006f",
     priceId: "price_enterprise",
-    credits: appConfig.defaultCredits
+    credits: appConfig.defaultCredits,
+    role: "ADMIN"
   },
   {
     id: "8",
@@ -108,11 +115,12 @@ export const users: User[] = [
     createdAt: new Date("2024-01-22T17:15:00Z"),
     subscribedAt: new Date("2024-01-25T14:00:00Z"),
     emailVerified: new Date("2024-01-22T17:15:00Z"),
-    isAdmin: false,
+    
     image: "https://randomuser.me/api/portraits/men/8.jpg",
     customerId: "cus_007g",
     priceId: "price_basic",
-    credits: appConfig.defaultCredits
+    credits: appConfig.defaultCredits,
+    role: "USER"
   },
   {
     id: "9",
@@ -122,11 +130,12 @@ export const users: User[] = [
     createdAt: new Date("2024-07-10T08:00:00Z"),
     subscribedAt: null,
     emailVerified: null,
-    isAdmin: false,
+    
     image: "https://randomuser.me/api/portraits/women/9.jpg",
     customerId: null,
     priceId: null,
-    credits: appConfig.defaultCredits
+    credits: appConfig.defaultCredits,
+    role: "USER"
   },
   {
     id: "10",
@@ -136,11 +145,12 @@ export const users: User[] = [
     createdAt: new Date("2024-02-14T10:10:00Z"),
     subscribedAt: new Date("2024-02-16T09:10:00Z"),
     emailVerified: new Date("2024-02-14T10:10:00Z"),
-    isAdmin: false,
+    
     image: "https://randomuser.me/api/portraits/men/10.jpg",
     customerId: "cus_008h",
     priceId: "price_pro",
-    credits: appConfig.defaultCredits
+    credits: appConfig.defaultCredits,
+    role: "USER"
   },
   {
     id: "11",
@@ -150,11 +160,12 @@ export const users: User[] = [
     createdAt: new Date("2024-06-12T19:00:00Z"),
     subscribedAt: new Date("2024-06-15T17:00:00Z"),
     emailVerified: new Date("2024-06-12T19:00:00Z"),
-    isAdmin: false,
+    
     image: "https://randomuser.me/api/portraits/women/11.jpg",
     customerId: "cus_009i",
     priceId: "price_basic",
-    credits: appConfig.defaultCredits
+    credits: appConfig.defaultCredits,
+    role: "USER"
   },
   {
     id: "12",
@@ -178,11 +189,12 @@ export const users: User[] = [
     createdAt: new Date("2024-04-20T10:10:00Z"),
     subscribedAt: new Date("2024-04-21T11:00:00Z"),
     emailVerified: new Date("2024-04-20T10:10:00Z"),
-    isAdmin: true,
+    
     image: "https://randomuser.me/api/portraits/women/13.jpg",
     customerId: "cus_010j",
     priceId: "price_enterprise",
-    credits: appConfig.defaultCredits
+    credits: appConfig.defaultCredits,
+    role: "ADMIN"
   },
   {
     id: "14",
@@ -192,11 +204,12 @@ export const users: User[] = [
     createdAt: new Date("2024-03-14T16:45:00Z"),
     subscribedAt: new Date("2024-03-16T09:30:00Z"),
     emailVerified: new Date("2024-03-14T16:45:00Z"),
-    isAdmin: false,
+    
     image: "https://randomuser.me/api/portraits/men/14.jpg",
     customerId: "cus_011k",
     priceId: "price_pro",
-    credits: appConfig.defaultCredits
+    credits: appConfig.defaultCredits,
+    role: "USER"
   },
   {
     id: "15",
@@ -206,11 +219,12 @@ export const users: User[] = [
     createdAt: new Date("2024-01-10T08:30:00Z"),
     subscribedAt: null,
     emailVerified: null,
-    isAdmin: false,
+    
     image: "https://randomuser.me/api/portraits/women/15.jpg",
     customerId: null,
     priceId: null,
-    credits: appConfig.defaultCredits
+    credits: appConfig.defaultCredits,
+    role: "USER"
   },
   {
     id: "16",
@@ -220,11 +234,12 @@ export const users: User[] = [
     createdAt: new Date("2024-02-05T12:00:00Z"),
     subscribedAt: new Date("2024-02-07T10:00:00Z"),
     emailVerified: new Date("2024-02-05T12:00:00Z"),
-    isAdmin: false,
+    
     image: "https://randomuser.me/api/portraits/men/16.jpg",
     customerId: "cus_012l",
     priceId: "price_basic",
-    credits: appConfig.defaultCredits
+    credits: appConfig.defaultCredits,
+    role: "USER"
   },
   {
     id: "17",
@@ -234,11 +249,12 @@ export const users: User[] = [
     createdAt: new Date("2024-06-01T13:20:00Z"),
     subscribedAt: new Date("2024-06-03T10:00:00Z"),
     emailVerified: new Date("2024-06-01T13:20:00Z"),
-    isAdmin: true,
+    
     image: "https://randomuser.me/api/portraits/women/17.jpg",
     customerId: "cus_013m",
     priceId: "price_enterprise",
-    credits: appConfig.defaultCredits
+    credits: appConfig.defaultCredits,
+    role: "ADMIN"
   },
   {
     id: "18",
@@ -248,11 +264,12 @@ export const users: User[] = [
     createdAt: new Date("2024-05-14T11:45:00Z"),
     subscribedAt: new Date("2024-05-15T08:00:00Z"),
     emailVerified: new Date("2024-05-14T11:45:00Z"),
-    isAdmin: false,
+    
     image: "https://randomuser.me/api/portraits/men/18.jpg",
     customerId: "cus_014n",
     priceId: "price_pro",
-    credits: appConfig.defaultCredits
+    credits: appConfig.defaultCredits,
+    role: "USER"
   },
   {
     id: "19",
@@ -262,11 +279,12 @@ export const users: User[] = [
     createdAt: new Date("2024-07-05T07:15:00Z"),
     subscribedAt: null,
     emailVerified: null,
-    isAdmin: false,
+    
     image: "https://randomuser.me/api/portraits/women/19.jpg",
     customerId: null,
     priceId: null,
-    credits: appConfig.defaultCredits
+    credits: appConfig.defaultCredits,
+    role: "USER"
   },
   {
     id: "20",
@@ -276,10 +294,11 @@ export const users: User[] = [
     createdAt: new Date("2024-07-01T10:10:00Z"),
     subscribedAt: new Date("2024-07-03T09:00:00Z"),
     emailVerified: new Date("2024-07-01T10:10:00Z"),
-    isAdmin: false,
+    
     image: "https://randomuser.me/api/portraits/men/20.jpg",
     customerId: "cus_015o",
     priceId: "price_basic",
-    credits: appConfig.defaultCredits
+    credits: appConfig.defaultCredits,
+    role: "USER"
   }
 ];
