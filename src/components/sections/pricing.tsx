@@ -160,13 +160,17 @@ function PlanCard({ plan }: { plan: Plan }) {
         <p className="text-muted-foreground text-sm">{plan.description}</p>
 
         <div className="my-4">
-          <div className="flex gap-1">
-            <p className="text-5xl font-extrabold tracking-tight">${plan.price}</p>
-            <div className="mb-[4px] flex flex-col justify-end">
-              <p className="text-muted-foreground text-sm font-medium capitalize">
-                / {plan.priceTagline}
-              </p>
-            </div>
+          <div className="flex items-end gap-2">
+            <p className="text-5xl font-extrabold tracking-tight">
+              {new Intl.NumberFormat("es-ES", {
+                style: "currency",
+                currency: "EUR",
+                maximumFractionDigits: 0,
+              }).format(plan.price)}
+            </p>
+            <span className="text-sm text-muted-foreground mb-2">
+              / {plan.priceTagline}
+            </span>
           </div>
         </div>
 
