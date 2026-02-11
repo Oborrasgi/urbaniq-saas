@@ -10,40 +10,44 @@ import { cn } from "@/lib/utils";
 const steps = [
   {
     id: 1,
-    title: "Discover What Inspires Engagement",
+    title: "AI-Powered Property Valuation",
     description:
-      "Don’t waste time guessing what content will work. Use real data and AI-curated insights to identify what your audience wants — before your competitors do.",
+      "Generate explainable valuation ranges (AVM) with confidence scores, comparable analysis, and market context. Not just a number — but a structured decision framework for pricing strategy.",
     Icon: Sparkles,
-    tag: "Inspiration",
+    tag: "AVM Intelligence",
     image: "/dashboard.png",
     features: [
-      "Instant Trend Discovery",
-      "Access Millions of Proven Examples",
-      "Engagement Pattern Analysis"
+      "Valuation range with confidence %",
+      "Comparable market analysis",
+      "Price positioning recommendations"
     ]
   },
   {
     id: 2,
-    title: "Automate Repetitive Workflows",
+    title: "Legal & Urban Risk Detection",
     description:
-      "Eliminate the busywork. Automate tasks like scheduling, publishing, and reporting so your team can focus on what really matters — creating value.",
+      "Identify registry charges, urban planning inconsistencies, documentation gaps, and compliance risks before listing or acquiring a property. Reduce surprises and increase transactional certainty.",
     Icon: Sparkles,
-    tag: "Automation",
+    tag: "Legal AI",
     image: "/dashboard.png",
-    features: ["Build once, automate forever", "Save hours every week", "Smart notifications"]
+    features: [
+      "Registry and encumbrance alerts",
+      "Urban planning risk flags",
+      "Documentation completeness check"
+    ]
   },
   {
     id: 3,
-    title: "Plan Smarter, Ship Faster",
+    title: "Lead Scoring & Next Best Action",
     description:
-      "Organize your content or product roadmap with clarity. Plan, prioritize, and track everything — from ideas to deadlines — all in one place.",
+      "Prioritize property owners based on sale probability (30/60/90/180 days) and receive AI-driven recommendations for the optimal next commercial action.",
     Icon: Sparkles,
-    tag: "Planning",
+    tag: "Propensity Engine",
     image: "/dashboard.png",
     features: [
-      "Visual drag-and-drop calendar",
-      "Real-time team collaboration",
-      "Move from plan to publish faster"
+      "Seller intent prediction model",
+      "Lead qualification scoring",
+      "Next Best Action automation"
     ]
   }
 ];
@@ -86,10 +90,9 @@ export default function Features() {
     >
       <SectionHeader>
         <SectionHeader.HeaderContent className="pb-6">
-          <SectionHeader.Heading>Built for teams that scale</SectionHeader.Heading>
+          <SectionHeader.Heading>UrbanIQ Intelligence Engine</SectionHeader.Heading>
           <SectionHeader.Text>
-            A growing team doesn&apos;t need to mean growing pains. <br /> We provide privacy-first
-            solutions and the right tools for every step of your journey.
+            From valuation to legal analysis and lead prioritization — UrbanIQ provides the core AI infrastructure for modern real estate professionals.
           </SectionHeader.Text>
         </SectionHeader.HeaderContent>
 

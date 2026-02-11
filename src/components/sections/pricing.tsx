@@ -26,58 +26,56 @@ interface Plan {
 const plans: Plan[] = [
   {
     recommended: false,
-    description: "Perfect for small projects",
-    priceTagline: "lifetime deal",
-    ...appConfig.stripe.plans[0],
+    title: "Starter",
+    price: 0,
+    priceId: appConfig.stripe.plans[0].priceId,
+    description: "Para explorar UrbanIQ y validar oportunidades inmobiliarias.",
+    priceTagline: "mes",
     features: [
-      { title: "NextJS boilerplate" },
-      { title: "Resend email service" },
-      { title: "Stripe payment service" },
-      { title: "Social Login / Magic Link" },
-      { title: "Open AI integration" },
-      { title: "Cloudinary image service" },
-      { title: "Other Ui tailwind library", isIncluded: false },
-      { title: "No updates", isIncluded: false },
-      { title: "Early access to features", isIncluded: false },
-      { title: "Migration assistance", isIncluded: false }
+      { title: "Acceso limitado a IA de captación" },
+      { title: "Valoración orientativa (AVM básico)" },
+      { title: "Análisis legal simplificado" },
+      { title: "1 zona geográfica" },
+      { title: "Soporte estándar" },
+      { title: "Predicción de intención de venta", isIncluded: false },
+      { title: "Distribución exclusiva de leads", isIncluded: false },
+      { title: "API & automatizaciones", isIncluded: false }
     ]
   },
-
   {
     recommended: true,
-    description: "Perfect for teams",
-    priceTagline: "per month",
-    ...appConfig.stripe.plans[1],
+    title: "Pro",
+    price: 59,
+    priceId: appConfig.stripe.plans[1].priceId,
+    description: "Para agentes e inversores que necesitan decisiones fiables.",
+    priceTagline: "mes",
     features: [
-      { title: "NextJS boilerplate" },
-      { title: "Resend email service" },
-      { title: "Stripe payment service" },
-      { title: "Social Login / Magic Link" },
-      { title: "Open AI integration" },
-      { title: "Cloudinary image service" },
-      { title: "Other Ui tailwind library", isIncluded: true },
-      { title: "1 year free updates", isIncluded: true },
-      { title: "Early access to features", isIncluded: false },
-      { title: "Migration assistance", isIncluded: false }
+      { title: "IA avanzada de captación de propietarios" },
+      { title: "Valoración AVM con rango y confianza" },
+      { title: "Análisis legal automatizado" },
+      { title: "Historial y scoring de leads" },
+      { title: "Hasta 5 zonas geográficas" },
+      { title: "Predicción de intención 30/60/90 días", isIncluded: true },
+      { title: "Distribución exclusiva de leads", isIncluded: false },
+      { title: "API & automatizaciones básicas", isIncluded: true }
     ]
   },
-
   {
     recommended: false,
-    description: "Buy once, use forever",
-    priceTagline: "once",
-    ...appConfig.stripe.plans[2],
+    title: "Business",
+    price: 129,
+    priceId: appConfig.stripe.plans[2].priceId,
+    description: "Para equipos inmobiliarios y despachos profesionales.",
+    priceTagline: "mes",
     features: [
-      { title: "NextJS boilerplate" },
-      { title: "Resend email service" },
-      { title: "Stripe payment service" },
-      { title: "Social Login / Magic Link" },
-      { title: "Open AI integration" },
-      { title: "Cloudinary image service" },
-      { title: "Other Ui tailwind library" },
-      { title: "Lifetime updates" },
-      { title: "Early access to features" },
-      { title: "Migration assistance" }
+      { title: "Todo lo incluido en Pro" },
+      { title: "Predicción avanzada de intención de venta" },
+      { title: "Distribución exclusiva de leads" },
+      { title: "Panel multiusuario" },
+      { title: "Integraciones y API completa" },
+      { title: "Marketplace de partners" },
+      { title: "SLA prioritario" },
+      { title: "Soporte dedicado" }
     ]
   }
 ];
@@ -92,10 +90,9 @@ export default function Pricing() {
     <div id="pricing">
       <SectionHeader>
         <SectionHeader.HeaderContent>
-          <SectionHeader.Heading>Simple, transparent pricing</SectionHeader.Heading>
+          <SectionHeader.Heading>Planes diseñados para el sector inmobiliario</SectionHeader.Heading>
           <SectionHeader.Text>
-            Start building your SaaS today with our flexible pricing options designed to scale with
-            your business.
+            Escala desde validación inicial hasta operaciones profesionales con inteligencia artificial aplicada al sector inmobiliario.
           </SectionHeader.Text>
         </SectionHeader.HeaderContent>
 
@@ -150,7 +147,7 @@ function PlanCard({ plan }: { plan: Plan }) {
         <div className="absolute top-[-13px] left-1/2 -translate-x-1/2 transform">
           <div className="bg-primary text-primary-foreground flex items-center gap-1 rounded-md px-3 py-1 text-xs font-medium tracking-wide">
             <Star size={14} />
-            <span>Recommended</span>
+            <span>Más elegido</span>
           </div>
         </div>
       )}

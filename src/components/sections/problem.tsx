@@ -5,25 +5,27 @@ import { Accessibility, Lightbulb, Zap, ZoomIn } from "lucide-react";
 const problems = [
   {
     icon: Zap,
-    title: "Blazing Performance",
+    title: "Captación ineficiente",
     description:
-      "We help you deliver lightning-fast load times, optimized APIs, and edge-first deployments."
+      "Muchos agentes dependen de portales o contactos reactivos. UrbanIQ identifica intención de venta antes de que el propietario publique."
   },
   {
     icon: Lightbulb,
-    title: "Built-In Innovation",
-    description: "Stay ahead with AI scaffolding, rapid prototyping that evolve with your SaaS."
+    title: "Valoraciones poco precisas",
+    description:
+      "Los AVM tradicionales ofrecen cifras opacas. UrbanIQ genera rangos con nivel de confianza y explicación basada en datos reales."
   },
   {
-    title: "Quality First",
-    description: "Scale code quality with automated tests, type safety, and monitoring",
-    icon: ZoomIn
+    icon: ZoomIn,
+    title: "Riesgo legal oculto",
+    description:
+      "Cargas, afecciones urbanísticas o documentación incompleta pueden frenar una operación. Detectamos alertas antes de captar o vender."
   },
   {
     icon: Accessibility,
-    title: "Accessible",
+    title: "Falta de priorización de leads",
     description:
-      "Accessible UI components with WCAG compliance and semantic best practices built-in."
+      "No todos los propietarios están listos para vender. UrbanIQ predice probabilidad 30/60/90/180 días y recomienda la siguiente acción óptima."
   }
 ];
 
@@ -37,10 +39,9 @@ export default function Problem() {
     >
       <SectionHeader>
         <SectionHeader.HeaderContent>
-          <SectionHeader.Heading>Challenges we address</SectionHeader.Heading>
+          <SectionHeader.Heading>Los problemas reales del sector inmobiliario</SectionHeader.Heading>
           <SectionHeader.Text>
-            We understand the challenges you face when building a SaaS product. <br /> We've built a
-            platform that helps you build your SaaS product faster and easier.
+            El mercado inmobiliario está lleno de fricciones: captación incierta, valoraciones imprecisas y riesgos legales ocultos. <br /> UrbanIQ transforma esos problemas en decisiones basadas en inteligencia artificial.
           </SectionHeader.Text>
         </SectionHeader.HeaderContent>
 

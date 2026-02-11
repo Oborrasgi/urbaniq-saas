@@ -12,33 +12,33 @@ import Link from "next/link";
 const faqItems = [
   {
     id: "item-1",
-    question: "How long does shipping take?",
+    question: "¿Qué es UrbanIQ y a quién va dirigido?",
     answer:
-      "Standard shipping takes 3-5 business days, depending on your location. Express shipping options are available at checkout for 1-2 business day delivery."
+      "UrbanIQ es una plataforma SaaS de inteligencia artificial especializada en el sector inmobiliario. Está diseñada para agentes, inversores, promotores y despachos que necesitan captar propietarios, valorar activos y analizar riesgos legales con mayor precisión."
   },
   {
     id: "item-2",
-    question: "What payment methods do you accept?",
+    question: "¿Cómo funciona la valoración automática (AVM)?",
     answer:
-      "We accept all major credit cards (Visa, Mastercard, American Express), PayPal, Apple Pay, and Google Pay. For enterprise customers, we also offer invoicing options."
+      "Nuestro modelo AVM combina datos de mercado, comparables reales y variables urbanísticas para ofrecer un rango de valoración con nivel de confianza. Además, incluye una explicación comprensible para justificar cada estimación."
   },
   {
     id: "item-3",
-    question: "Can I change or cancel my order?",
+    question: "¿UrbanIQ analiza riesgos legales del inmueble?",
     answer:
-      "You can modify or cancel your order within 1 hour of placing it. After this window, please contact our customer support team who will assist you with any changes."
+      "Sí. La plataforma identifica posibles cargas registrales, riesgos urbanísticos y alertas jurídicas antes de captar o comercializar un activo, reduciendo incertidumbre y mejorando la toma de decisiones."
   },
   {
     id: "item-4",
-    question: "Do you ship internationally?",
+    question: "¿Puedo usar UrbanIQ en varias zonas geográficas?",
     answer:
-      "Yes, we ship to over 50 countries worldwide. International shipping typically takes 7-14 business days. Additional customs fees may apply depending on your country's import regulations."
+      "Depende del plan contratado. Desde el plan Starter con una zona hasta planes profesionales con múltiples áreas, puedes escalar según tu volumen de operaciones."
   },
   {
     id: "item-5",
-    question: "What is your return policy?",
+    question: "¿Es compatible con mi CRM o herramientas actuales?",
     answer:
-      "We offer a 30-day return policy for most items. Products must be in original condition with tags attached. Some specialty items may have different return terms, which will be noted on the product page."
+      "Los planes avanzados incluyen integraciones y API para conectar UrbanIQ con tu CRM, automatizaciones y herramientas internas, permitiendo flujos de trabajo más eficientes."
   }
 ];
 
@@ -46,10 +46,9 @@ export default function FAQsTwo() {
   return (
     <SectionHeader className="py-16 md:py-24">
       <SectionHeader.HeaderContent>
-        <SectionHeader.Heading>Frequently Asked Questions</SectionHeader.Heading>
+        <SectionHeader.Heading>Preguntas frecuentes sobre UrbanIQ</SectionHeader.Heading>
         <SectionHeader.Text>
-          Discover quick and comprehensive answers to common questions about our platform, services,
-          and features.
+          Respuestas claras sobre cómo UrbanIQ utiliza inteligencia artificial para mejorar la captación, valoración y análisis inmobiliario.
         </SectionHeader.Text>
       </SectionHeader.HeaderContent>
 
@@ -80,9 +79,9 @@ export default function FAQsTwo() {
         </Accordion>
 
         <p className="text-muted-foreground mt-6 px-8 text-center">
-          Can't find what you're looking for? Contact our{" "}
-          <Link href="#" className="text-primary font-medium hover:underline">
-            customer support team
+          ¿Necesitas más información? Contacta con nuestro{" "}
+          <Link href="/contact" className="text-primary font-medium hover:underline">
+            equipo de soporte
           </Link>
         </p>
       </SectionHeader.Content>

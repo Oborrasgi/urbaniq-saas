@@ -29,9 +29,9 @@ export default function BentoGrid() {
     >
       <SectionHeader>
         <SectionHeader.HeaderContent>
-          <SectionHeader.Heading>The best way to build your SaaS</SectionHeader.Heading>
+          <SectionHeader.Heading>UrbanIQ Intelligence Engine</SectionHeader.Heading>
           <SectionHeader.Text>
-            We&apos;ve built a suite of products for some of the world&apos;s largest companies.
+            Una arquitectura de IA diseñada específicamente para captación, valoración y análisis legal inmobiliario.
           </SectionHeader.Text>
         </SectionHeader.HeaderContent>
 
@@ -54,19 +54,13 @@ export default function BentoGrid() {
 
                   <div className="flex flex-col pt-6">
                     <h3 className="group-hover:text-primary mb-3 text-2xl font-bold transition-colors">
-                      Edge-Powered Performance
+                      Motor de detección de intención de venta
                     </h3>
 
                     <p className="text-muted-foreground mb-10">
-                      Supercharge your app's performance with edge computing and real-time data
-                      syncing. Deploy globally with
-                      <span className="font-semibold"> blazing speed</span> and minimal latency —
-                      built for scale from day one. Our proprietary quantum optimization algorithms
-                      ensure
-                      <span className="font-semibold"> 99.99% uptime</span> even during peak
-                      traffic. Experience
-                      <span className="font-semibold"> sub-100ms response times</span> across all
-                      continents with our intelligent edge caching.
+                      Modelos predictivos entrenados con datos de mercado, comportamiento histórico y
+                      señales digitales para identificar propietarios con alta probabilidad de venta
+                      en ventanas de 30–180 días. Prioriza oportunidades antes que la competencia.
                     </p>
 
                     <div className="flex items-end justify-between">
@@ -93,11 +87,11 @@ export default function BentoGrid() {
                   </div>
 
                   <div className="flex h-full flex-col pt-6">
-                    <h3 className="mb-3 text-2xl font-bold">AI-Driven Insights</h3>
+                    <h3 className="mb-3 text-2xl font-bold">Valoración AVM explicable</h3>
                     <p className="text-primary-foreground/90 mb-6">
-                      Make smarter product decisions using AI-powered dashboards. Track user
-                      behavior, churn prediction, and feature adoption without complex setup or
-                      third-party tools.
+                      Genera rangos de valor con nivel de confianza, factores de ajuste y contexto
+                      comparativo real. No es un número opaco: es una valoración con explicación
+                      técnica y trazabilidad.
                     </p>
 
                     <div className="flex items-end justify-between">
@@ -126,13 +120,13 @@ export default function BentoGrid() {
 
                   <div className="flex flex-col pt-6">
                     <h3 className="group-hover:text-primary mb-3 text-2xl font-bold transition-colors">
-                      Polished UI Components
+                      Análisis legal y urbanístico automatizado
                     </h3>
 
                     <p className="text-muted-foreground mb-6">
-                      Deliver a frictionless, modern UI with pre-built, accessible components. Built
-                      on top of Tailwind and React, so your design system stays consistent and easy
-                      to extend.
+                      Detecta cargas registrales, riesgos urbanísticos y alertas documentales antes
+                      de iniciar la comercialización. Reduce incidencias en notaría y mejora la
+                      seguridad jurídica de cada operación.
                     </p>
 
                     <div className="flex items-end justify-between">
@@ -161,12 +155,13 @@ export default function BentoGrid() {
 
                   <div className="flex flex-col pt-6">
                     <h3 className="group-hover:text-primary mb-3 text-2xl font-bold transition-colors">
-                      Launch Velocity Toolkit
+                      Next Best Action con IA
                     </h3>
 
                     <p className="text-muted-foreground mb-6">
-                      Launch faster with boilerplates, CI/CD pipelines, and built-in testing. Focus
-                      on features, not configuration — get your MVP to market in days, not weeks.
+                      La plataforma recomienda automáticamente el siguiente paso óptimo para cada
+                      lead según probabilidad de conversión, perfil del activo y momento de venta.
+                      Automatiza decisiones estratégicas en captación.
                     </p>
 
                     <div className="flex items-end justify-between">
@@ -195,13 +190,13 @@ export default function BentoGrid() {
 
                   <div className="flex flex-col pt-6">
                     <h3 className="group-hover:text-primary mb-3 text-2xl font-bold transition-colors">
-                      Secure by Design
+                      Arquitectura segura y compliance integrado
                     </h3>
 
                     <p className="text-muted-foreground mb-6">
-                      Bank-grade security out of the box — with role-based access, encrypted data,
-                      and seamless auth integrations (OAuth, SSO, JWT). Your users' trust, protected
-                      by default.
+                      Infraestructura preparada para RGPD, control de accesos por roles y
+                      trazabilidad completa de datos. Diseñado para operar en entornos
+                      profesionales y despachos jurídicos.
                     </p>
 
                     <div className="flex items-end justify-between">

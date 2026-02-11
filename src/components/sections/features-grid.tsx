@@ -9,33 +9,39 @@ import { SectionHeader } from "@/components/section-headers";
 const features = [
   {
     icon: Zap,
-    title: "Faaast",
-    description: "It supports an entire helping developers and innovate."
+    title: "Captación Inteligente",
+    description:
+      "Detecta propietarios con intención de venta mediante modelos predictivos y señales digitales avanzadas."
   },
   {
     icon: Cpu,
-    title: "Powerful",
-    description: "It supports an entire helping developers and businesses."
+    title: "AVM Explicable",
+    description:
+      "Obtén rangos de valoración con nivel de confianza, comparables y factores de mercado en segundos."
   },
   {
     icon: Fingerprint,
-    title: "Security",
-    description: "It supports an helping developers businesses."
+    title: "Análisis Legal Automatizado",
+    description:
+      "Identifica riesgos urbanísticos, cargas registrales y alertas documentales antes de captar o vender."
   },
   {
     icon: Pencil,
-    title: "Customization",
-    description: "It supports helping developers and businesses innovate."
+    title: "Perfilado de Activos",
+    description:
+      "Genera un Property Health Score con diagnóstico técnico, jurídico y comercial del inmueble."
   },
   {
     icon: Settings2,
-    title: "Control",
-    description: "It supports helping developers and businesses innovate."
+    title: "Next Best Action",
+    description:
+      "La plataforma recomienda el siguiente paso óptimo según probabilidad de conversión y momento de venta."
   },
   {
     icon: Sparkles,
-    title: "Built for AI",
-    description: "It supports helping developers and businesses innovate."
+    title: "Distribución de Leads",
+    description:
+      "Entrega leads cualificados con exclusividad a partners verificados bajo modelos CPL, CPA o híbridos."
   }
 ];
 
@@ -49,9 +55,9 @@ export default function FeaturesGrid() {
     >
       <SectionHeader id="features">
         <SectionHeader.HeaderContent>
-          <SectionHeader.Heading>Powerful features</SectionHeader.Heading>
+          <SectionHeader.Heading>UrbanIQ Intelligence Engine</SectionHeader.Heading>
           <SectionHeader.Text>
-            Everything you need to build, launch, and scale your SaaS application with confidence.
+            Tecnología diseñada para captar, cualificar y maximizar el valor de cada oportunidad inmobiliaria.
           </SectionHeader.Text>
         </SectionHeader.HeaderContent>
 

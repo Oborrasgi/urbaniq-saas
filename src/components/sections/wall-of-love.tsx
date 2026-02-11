@@ -16,43 +16,43 @@ interface Testimonial {
 const testimonialsRow1: Testimonial[] = [
   {
     id: "1",
-    text: "This product has completely transformed our workflow. **The efficiency gains are remarkable** and our team productivity has increased by 30%.",
-    name: "Sarah Chen",
-    username: "@sarah_chen"
+    text: "Desde que utilizamos UrbanIQ hemos aumentado un **27% la captación de propietarios en exclusiva** en menos de 3 meses.",
+    name: "Laura Gómez",
+    username: "Directora · Agencia Tarragona"
   },
   {
     id: "2",
-    text: "I was skeptical at first, but after implementing this solution, our conversion rates doubled within the first month.",
-    name: "Alex Rivera",
-    username: "@alex_rivera",
+    text: "El sistema de valoración con rango y confianza nos permite justificar el precio ante el cliente con datos reales.",
+    name: "Carlos Martín",
+    username: "Broker · Barcelona",
     img: "/avatars/avatar-1.jpg"
   },
   {
     id: "3",
-    text: "The customer support team is exceptional. They helped us **customize everything to our specific needs.**",
-    name: "Michael Chen",
-    username: "@michael_chen",
+    text: "La predicción de intención de venta nos ayuda a priorizar leads con mayor probabilidad de cierre.",
+    name: "Marta Ruiz",
+    username: "Equipo captación · Reus",
     img: "/avatars/avatar-2.jpg"
   },
   {
     id: "4",
-    text: "We've tried many similar products, but this one stands out for its **intuitive interface and powerful features**.",
-    name: "Sophia Martinez",
-    username: "@sophia_martinez",
+    text: "Gracias al Legal Twin reducimos incidencias jurídicas antes de firmar arras.",
+    name: "Jordi Serra",
+    username: "Perito judicial · Costa Dorada",
     img: "/avatars/avatar-3.jpg"
   },
   {
     id: "5",
-    text: "The ROI we've seen is incredible. This product paid for itself within the first quarter of use.",
-    name: "David Williams",
-    username: "@david_williams",
+    text: "UrbanIQ nos permite trabajar con datos y no con intuición. **Más decisiones estratégicas, menos improvisación.**",
+    name: "Ana López",
+    username: "Inversora · Valencia",
     img: "/avatars/avatar-4.jpg"
   },
   {
     id: "6",
-    text: "Implementation was seamless and the **learning curve was minimal**. Our entire team was up and running in days.",
-    name: "Emma Rodriguez",
-    username: "@emma_rodriguez",
+    text: "La automatización del scoring de leads nos ahorra horas cada semana.",
+    name: "David Navarro",
+    username: "Responsable expansión · Madrid",
     img: "/avatars/avatar-6.jpg"
   }
 ];
@@ -60,43 +60,43 @@ const testimonialsRow1: Testimonial[] = [
 const testimonialsRow2: Testimonial[] = [
   {
     id: "7",
-    text: "This solution has helped us reduce errors by **45% and streamline our entire approval process**.",
-    name: "James Wilson",
-    username: "@james_wilson"
+    text: "Hemos reducido un **35% el tiempo medio de captación** gracias a la priorización inteligente.",
+    name: "Sergio Torres",
+    username: "CEO · Agencia independiente"
   },
   {
     id: "8",
-    text: "**The analytics capabilities have given us insights we never had before**, helping us make data-driven decisions.",
-    name: "Olivia Garcia",
-    username: "@olivia_garcia",
+    text: "El análisis legal automatizado nos aporta seguridad antes de publicar un activo.",
+    name: "Claudia Pérez",
+    username: "Departamento jurídico",
     img: "/avatars/avatar-5.jpg"
   },
   {
     id: "9",
-    text: "We've been able to scale our operations without adding headcount thanks to the automation features.",
-    name: "Robert Kim",
-    username: "@robert_kim",
+    text: "Ahora podemos escalar sin aumentar equipo gracias a los flujos automatizados.",
+    name: "Ricardo Molina",
+    username: "Director comercial",
     img: "/avatars/avatar-2.jpg"
   },
   {
     id: "10",
-    text: "The customization options are extensive. We've been able to tailor everything to match our exact requirements.",
-    name: "Jennifer Patel",
-    username: "@jennifer_patel",
+    text: "La exclusividad del lead y el control del marketplace marca la diferencia frente a otros portales.",
+    name: "Elena Castillo",
+    username: "Agente senior",
     img: "/avatars/avatar-7.jpg"
   },
   {
     id: "11",
-    text: "Our clients have noticed the **improvement in our service delivery** since we implemented this product.",
-    name: "Thomas Brown",
-    username: "@thomas_brown",
+    text: "Nuestros clientes perciben mayor profesionalidad al presentar informes con datos y scoring.",
+    name: "Pedro Sánchez",
+    username: "Asesor inmobiliario",
     img: "/avatars/avatar-1.jpg"
   },
   {
     id: "12",
-    text: "The security features give us peace of mind when **handling sensitive customer information**.",
-    name: "Sarah Martinez",
-    username: "@sarah_martinez",
+    text: "La arquitectura es sólida y preparada para escalar en multiagencia.",
+    name: "Lucía Herrera",
+    username: "CTO · PropTech",
     img: "/avatars/avatar-3.jpg"
   }
 ];
@@ -105,9 +105,9 @@ export default function WallOfLove() {
   return (
     <SectionHeader id="wall-of-love">
       <SectionHeader.HeaderContent>
-        <SectionHeader.Heading>What our customers are saying</SectionHeader.Heading>
+        <SectionHeader.Heading>Lo que opinan profesionales inmobiliarios</SectionHeader.Heading>
         <SectionHeader.Text>
-          We're proud to have a community of happy customers who love using our product.
+          Agencias, inversores y profesionales que ya trabajan con inteligencia artificial aplicada al sector inmobiliario.
         </SectionHeader.Text>
       </SectionHeader.HeaderContent>
 

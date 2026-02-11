@@ -19,56 +19,59 @@ interface FAQItem {
 
 const faqs: FAQItem[] = [
   {
-    question: "What’s included when I purchase SaasPilot?",
-    answer: (
-      <>
-        <p>
-          When you purchase SaasPilot get a complete Next.js foundation for your online business. It
-          includes essential boilerplate like:
-        </p>
-        <ul className="mt-2 list-disc space-y-1 ps-6">
-          <li>Payment system integration (Stripe)</li>
-          <li>Database setup (Prisma)</li>
-          <li>Authentication (NextAuth.js)</li>
-          <li>Essential UI components (Shadcn UI)</li>
-          <li>Email system integration (Resend)</li>
-          <li>And much more...</li>
-        </ul>
-      </>
-    )
-  },
-  {
-    question: "Do I get updates?",
-    answer: <p>Yes, you get updates for the core dependencies and the project structure.</p>
-  },
-  {
-    question: "Can I use SaasPilot tech stack is different?",
+    question: "What is UrbanIQ?",
     answer: (
       <p>
-        Absolutely! While SaasPilot built with a modern Next.js/TypeScript/Prisma/Stripe stack, you
-        can adapt many of its patterns, UI components, and architectural ideas to other frameworks
-        or technologies. However, out of the box, SaasPilot optimized for the provided stack. If you
-        use a different backend, database, or payment provider, you may need to modify or replace
-        certain integrations to fit your needs.
+        UrbanIQ is an AI-powered real estate intelligence platform that helps property owners,
+        agents, investors, and legal professionals analyze property value, detect legal risks,
+        and qualify opportunities before making strategic decisions.
       </p>
     )
   },
   {
-    question: "Is there a refund policy?",
+    question: "Does UrbanIQ provide property valuations?",
     answer: (
       <p>
-        SaasPilot digital product. All sales are final and non-refundable. Once you receive access
-        to the SaasPilot codebase, it is yours to keep permanently.
+        Yes. UrbanIQ generates AI-assisted valuation ranges (AVM) with confidence scores and
+        explanatory factors based on market data, comparables, and contextual signals — not just
+        a single opaque number.
       </p>
     )
   },
   {
-    question: "What support and assistance do I receive?",
+    question: "Does UrbanIQ analyze legal and urban planning risks?",
     answer: (
       <p>
-        SaasPilot provides clear, comprehensive documentation and responsive email support to assist
-        you with setup, understanding the codebase, and resolving any SaasPilot-related questions or
-        issues.
+        Absolutely. The platform flags potential registry issues, urban planning constraints,
+        documentation gaps, and legal risks so you can anticipate problems before listing,
+        investing, or closing a transaction.
+      </p>
+    )
+  },
+  {
+    question: "Is UrbanIQ a real estate agency?",
+    answer: (
+      <p>
+        No. UrbanIQ is a neutral intelligence platform. We do not sell properties — we provide
+        structured analysis, scoring, and decision-support tools that professionals can act on.
+      </p>
+    )
+  },
+  {
+    question: "How long does it take to generate an analysis?",
+    answer: (
+      <p>
+        Most property analyses are generated in under 60 seconds once the required data is
+        submitted. Advanced modules may take slightly longer depending on complexity.
+      </p>
+    )
+  },
+  {
+    question: "Is UrbanIQ compliant with RGPD/GDPR?",
+    answer: (
+      <p>
+        Yes. UrbanIQ is designed with data protection and privacy by default. User data is
+        processed securely, with consent-based flows and compliance-ready architecture.
       </p>
     )
   }
@@ -78,10 +81,9 @@ export default function FAQ() {
   return (
     <SectionHeader id="faq" className="bg-muted/30 mx-auto">
       <SectionHeader.HeaderContent>
-        <SectionHeader.Heading>Frequently asked questions</SectionHeader.Heading>
+        <SectionHeader.Heading>UrbanIQ – Frequently Asked Questions</SectionHeader.Heading>
         <SectionHeader.Text>
-          Have questions? We've got answers. Find information about features, licensing, support,
-          and more.
+          Have questions about AI-powered property valuation, legal analysis, compliance, or platform capabilities? Here are clear answers.
         </SectionHeader.Text>
       </SectionHeader.HeaderContent>
 

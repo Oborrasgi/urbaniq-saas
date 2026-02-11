@@ -10,35 +10,35 @@ const statVariants = {
 const stats = [
   {
     id: 1,
-    name: "Active Users",
-    value: "50K+",
+    name: "Qualified Seller Leads",
+    value: "+37%",
     icon: Users,
-    description: "Monthly active users",
-    trend: "+12%"
+    description: "Increase in qualified owner leads in 90 days",
+    trend: "+8%"
   },
   {
     id: 2,
-    name: "Global Reach",
-    value: "180+",
-    icon: Globe,
-    description: "Countries served",
-    trend: "+25%"
+    name: "AVM Accuracy",
+    value: "92%",
+    icon: TrendingUp,
+    description: "Median valuation confidence range",
+    trend: "+3%"
   },
   {
     id: 3,
-    name: "Success Rate",
-    value: "99.9%",
-    icon: TrendingUp,
-    description: "Uptime guarantee",
-    trend: "+0.1%"
+    name: "Time Saved",
+    value: "15h / week",
+    icon: Globe,
+    description: "Automation & AI-driven workflows",
+    trend: "+5h"
   },
   {
     id: 4,
-    name: "Awards Won",
-    value: "15+",
+    name: "Conversion Rate",
+    value: "2.4x",
     icon: Award,
-    description: "Industry recognition",
-    trend: "+5"
+    description: "Higher closing rate vs traditional funnel",
+    trend: "+18%"
   }
 ];
 
@@ -46,10 +46,9 @@ export default function Stats() {
   return (
     <SectionHeader className="md:pb-36">
       <SectionHeader.HeaderContent>
-        <SectionHeader.Heading>Trusted by thousands of businesses worldwide</SectionHeader.Heading>
+        <SectionHeader.Heading>Real estate intelligence, measured in results</SectionHeader.Heading>
         <SectionHeader.Text>
-          Where creativity and technology converge, our platform nurtures groundbreaking ideas,
-          sparks inspiration, and enables everyone to bring their dreams to life.
+          UrbanIQ transforms anonymous traffic into exclusive, qualified seller leads. Our AI scoring, legal validation and predictive intent models deliver measurable impact — not vanity metrics.
         </SectionHeader.Text>
       </SectionHeader.HeaderContent>
 

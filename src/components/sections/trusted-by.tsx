@@ -1,16 +1,14 @@
-import Image from "next/image";
-
 import { Marquee } from "@/components/marquee";
 import { MotionDiv } from "@/components/motion-elements";
 import { SectionHeader } from "@/components/section-headers";
 
 const sponsors = [
-  "/clients/client-logo-1.svg",
-  "/clients/client-logo-2.svg",
-  "/clients/client-logo-3.svg",
-  "/clients/client-logo-4.svg",
-  "/clients/client-logo-5.svg",
-  "/clients/client-logo-6.svg"
+  { name: "Agencias inmobiliarias", label: "Agencias" },
+  { name: "Fondos de inversión", label: "Fondos" },
+  { name: "Servicers", label: "Servicers" },
+  { name: "Brokers hipotecarios", label: "Brokers" },
+  { name: "Despachos legales", label: "Legal" },
+  { name: "Promotoras", label: "Promotoras" }
 ];
 
 export default function TrustedBy() {
@@ -23,23 +21,21 @@ export default function TrustedBy() {
     >
       <SectionHeader>
         <SectionHeader.HeaderContent className="pb-12">
-          <SectionHeader.Heading>Trusted by</SectionHeader.Heading>
-          <SectionHeader.Text>We are trusted by the world's best companies</SectionHeader.Text>
+          <SectionHeader.Heading>Con la confianza del sector inmobiliario</SectionHeader.Heading>
+          <SectionHeader.Text>
+            UrbanIQ es utilizado por agencias, inversores y profesionales que toman decisiones basadas en datos.
+          </SectionHeader.Text>
         </SectionHeader.HeaderContent>
 
         <SectionHeader.Content>
           <div className="bg-background relative flex h-full w-full flex-col items-center justify-center overflow-hidden rounded-lg">
             <Marquee duration="40s" className="ms-2 flex shrink-0 flex-row justify-around gap-2">
               {sponsors.map((sponsor, index) => (
-                <div key={index} className="flex h-16 w-40 items-center justify-center">
-                  <Image
-                    width={0}
-                    alt="logo"
-                    height={64}
-                    src={sponsor}
-                    className="h-full w-auto object-contain px-5 dark:invert"
-                    sizes="(max-width: 640px) 100vw, 200px"
-                  />
+                <div
+                  key={index}
+                  className="flex h-16 min-w-[180px] items-center justify-center rounded-md border border-dashed px-6 text-sm font-medium text-muted-foreground"
+                >
+                  {sponsor.name}
                 </div>
               ))}
             </Marquee>

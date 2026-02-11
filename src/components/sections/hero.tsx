@@ -27,7 +27,7 @@ export default function Hero() {
             <span className="bg-primary text-primary-foreground block truncate rounded-full px-1.5 py-0.5 font-medium">
               📣 Announcement
             </span>{" "}
-            Introducing SaasPilot
+            Introducing UrbanIQ – AI Real Estate Intelligence
           </Link>
         </MotionDiv>
 
@@ -37,9 +37,10 @@ export default function Hero() {
           transition={{ duration: 0.3, delay: 0.1 }}
           className="mb-6 text-4xl leading-tight font-bold sm:text-5xl md:text-6xl"
         >
-          The scalable and production-ready Next.js SaaS{" "}
+          UrbanIQ
+          <br />
           <span className="bg-muted inline-block rounded-md px-2 font-mono">
-            <TypingEffect text="starter kit" />
+            <TypingEffect text="AI-powered real estate intelligence" />
           </span>
         </MotionH1>
 
@@ -49,9 +50,9 @@ export default function Hero() {
           transition={{ duration: 0.3, delay: 0.2 }}
           className="text-muted-foreground mb-8 max-w-3xl text-lg"
         >
-          Save endless hours of development time and focus on what's important for your customers
-          with our ready-to-use Next.js SaaS boilerplate. Build and ship faster than the
-          competition.
+          Analyze property value, detect legal risks, and prioritize high-intent sellers in seconds.
+          UrbanIQ combines artificial intelligence, market data, and legal intelligence into one
+          decision engine built for real estate professionals.
         </MotionParagraph>
 
         <MotionDiv
@@ -69,7 +70,7 @@ export default function Hero() {
                 strokeWidth={2}
                 className="size-4 transition-transform duration-300 group-hover:scale-110"
               />
-              Documentation
+              Platform Overview
             </Button>
           </Link>
 
@@ -79,7 +80,7 @@ export default function Hero() {
                 strokeWidth={2}
                 className="size-4 transition-transform duration-300 group-hover:scale-110"
               />
-              Get SaasPilot
+              Request Demo
             </Button>
           </Link>
         </MotionDiv>
@@ -100,7 +101,7 @@ export default function Hero() {
             height={1200}
             src={dashboard}
             className="rounded-xl"
-            alt="SaasPilot Dashboard Preview"
+            alt="UrbanIQ AI Real Estate Dashboard Preview"
           />
         </MotionDiv>
       </SectionHeader.Content>

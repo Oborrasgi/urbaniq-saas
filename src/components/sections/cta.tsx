@@ -1,4 +1,5 @@
 import { Rocket } from "lucide-react";
+import Link from "next/link";
 
 import { MotionDiv } from "@/components/motion-elements";
 import { SectionHeader } from "@/components/section-headers";
@@ -15,8 +16,8 @@ export default function CTA() {
           whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
           transition={{ duration: 0.3, ease: "easeInOut" }}
         >
-          <SectionHeader.Heading className="font-mono font-extrabold md:text-6xl/none">
-            Build, Launch & Scale Your Business Today
+          <SectionHeader.Heading className="font-extrabold md:text-6xl/none">
+            Toma decisiones inmobiliarias con ventaja competitiva
           </SectionHeader.Heading>
         </MotionDiv>
 
@@ -28,10 +29,9 @@ export default function CTA() {
           transition={{ duration: 0.3, ease: "easeInOut", delay: 0.1 }}
         >
           <SectionHeader.Text className="md:text-lg">
-            SaasPilot takes care of the complex technical aspects like authentication, payment
-            processing, search engine optimization, user interface design, and third-party
-            integrations, allowing you to concentrate on developing your core product and generating
-            revenue.
+            UrbanIQ combina inteligencia artificial, análisis legal y datos de mercado para ayudarte
+            a captar mejores propietarios, valorar activos con precisión y reducir riesgos antes de
+            cerrar una operación.
           </SectionHeader.Text>
         </MotionDiv>
 
@@ -42,9 +42,12 @@ export default function CTA() {
           transition={{ duration: 0.3, ease: "easeInOut", delay: 0.2 }}
           className="mt-6 flex w-full items-center justify-center md:mt-10"
         >
-          <Button className="h-auto !px-12 !py-4">
-            <Rocket /> Get SaasPilot
-          </Button>
+          <Link href="/register">
+            <Button className="h-auto !px-12 !py-4 text-base font-semibold">
+              <Rocket className="mr-2 size-4" />
+              Solicitar acceso a UrbanIQ
+            </Button>
+          </Link>
         </MotionDiv>
       </SectionHeader.HeaderContent>
     </SectionHeader>
