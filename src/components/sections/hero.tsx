@@ -35,13 +35,13 @@ export default function Hero() {
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.3, delay: 0.1 }}
-          className="mb-4 text-4xl leading-[1.05] font-light tracking-tight sm:text-5xl md:text-6xl lg:text-[72px]"
+          className="mb-6 text-4xl leading-[1.08] font-semibold tracking-tight sm:text-5xl md:text-6xl lg:text-[64px]"
         >
-          <span className="block font-semibold">
+          <span className="block">
             UrbanIQ
           </span>
-          <span className="block text-primary font-light tracking-tight">
-            AI-powered real estate intelligence
+          <span className="block mt-1 text-foreground/90 font-medium">
+            AI‑powered real estate intelligence
           </span>
         </MotionH1>
 
@@ -49,7 +49,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.3, delay: 0.2 }}
-          className="text-muted-foreground mb-6 max-w-2xl text-base md:text-lg leading-relaxed"
+          className="text-muted-foreground mb-8 max-w-2xl text-sm md:text-base leading-relaxed"
         >
           Analyze property value, detect legal risks, and prioritize high-intent sellers in seconds.
           UrbanIQ combines artificial intelligence, market data, and legal intelligence into one
