@@ -1,6 +1,6 @@
-# SaasPilot - Next.js SaaS Boilerplate
+# UrbanIQ – AI-Powered Real Estate Intelligence SaaS
 
-A modern, production-ready Next.js 15 boilerplate for building SaaS applications with React 19, TypeScript, Tailwind CSS v4, and shadcn/ui.
+UrbanIQ is a production-ready AI-powered real estate intelligence platform built with Next.js 15, React 19, TypeScript, Tailwind CSS v4, and shadcn/ui. It enables property valuation (AVM), legal risk analysis, lead scoring, and intelligent decision-making for real estate professionals.
 
 ## Tech Stack
 
@@ -13,7 +13,6 @@ A modern, production-ready Next.js 15 boilerplate for building SaaS applications
 - **Deployment:** Optimized for [Vercel](https://vercel.com/)
 
 ## Features
-
 - 🚀 **Modern Stack**: Next.js 15, React 19, TypeScript
 - 🎨 **Beautiful UI**: Tailwind CSS v4 with shadcn/ui components
 - 📱 **Responsive**: Mobile-first design approach
@@ -24,6 +23,16 @@ A modern, production-ready Next.js 15 boilerplate for building SaaS applications
 - 🔐 **Authentication**: Secure authentication system
 - 📊 **Database**: Prisma ORM for database operations
 - 🧩 **Component Library**: Reusable UI components
+
+---
+
+- 🧠 **AI Decision Engine**: AVM with confidence scoring and explainability  
+- ⚖️ **Legal Intelligence**: Automated legal risk detection  
+- 📈 **Lead Scoring**: High-intent seller prioritization  
+- 🏘️ **Multi-Role System**: USER, PRO, BUSINESS, ADMIN roles  
+- 💳 **Stripe Billing**: Subscription-based SaaS monetization  
+- 📊 **Admin Dashboard**: User management and role control  
+- 🔐 **RBAC**: Role-based access control with Prisma enum  
 
 ## Getting Started
 
@@ -42,6 +51,7 @@ npm run dev
 ```
 
 > **Note:** SaasPilot requires Node 20 or greater. Type `node -v` in your terminal to check your version.
+> **Note:** UrbanIQ requires Node 20 or greater. Type `node -v` in your terminal to check your version.
 
 1. Rename `.env.example` to `.env`:
 
@@ -58,7 +68,7 @@ mv .env.example .env
 ├── app/                 # App Router pages and layouts
 │   ├── api/             # API routes
 │   ├── (auth)/          # Authentication pages
-│   ├── (dashboard)/     # Dashboard pages
+│   ├── (dashboard)/     # Dashboard (AVM, Legal, Leads, Admin, Billing)
 │   ├── (marketing)/     # Marketing pages
 ├── components/          # React components
 │   ├── forms/           # Form components
@@ -118,7 +128,7 @@ Always check if the component already exists in `components/ui/` before adding.
 
 ## Deployment
 
-The project is optimized for deployment on Vercel:
+UrbanIQ is optimized for deployment on Vercel:
 
 ```bash
 npm run build

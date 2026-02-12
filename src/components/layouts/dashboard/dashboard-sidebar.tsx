@@ -22,6 +22,19 @@ export async function DashboardSidebar({ ...props }: React.ComponentProps<typeof
   if (!currentUser) {
     redirect(appConfig.auth.login);
   }
+  const capabilities = {
+    isAdmin: currentUser.role === "ADMIN",
+
+    // Admin-only management
+    canManagePlans: currentUser.role === "ADMIN",
+    canManageBlog: currentUser.role === "ADMIN",
+
+    // Plan-based operational features
+    hasAvm: currentUser.plan?.hasAvm ?? false,
+    hasLegalAI: currentUser.plan?.hasLegalAI ?? false,
+    hasLeadScoring: currentUser.plan?.hasLeadScoring ?? false,
+    hasApiAccess: currentUser.plan?.hasApiAccess ?? false,
+  };
 
   return (
     <Sidebar collapsible="icon" variant="sidebar" side="left" {...props}>
@@ -47,7 +60,7 @@ export async function DashboardSidebar({ ...props }: React.ComponentProps<typeof
       </SidebarHeader>
 
       <SidebarContent>
-        <SidebarNavItems />
+        <SidebarNavItems capabilities={capabilities} />
       </SidebarContent>
 
       <SidebarFooter className="overflow-hidden">

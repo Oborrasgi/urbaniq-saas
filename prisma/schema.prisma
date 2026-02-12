@@ -1,28 +1,12 @@
-// ==============================
-// PRISMA CLIENT
-// ==============================
 generator client {
   provider = "prisma-client-js"
 }
 
-// ==============================
-// DATABASE (Neon PostgreSQL)
-// ==============================
 datasource db {
   provider = "postgresql"
-  url      = env("DATABASE_URL")  // ← Agrega esta línea
+  url      = env("DATABASE_URL")
 }
 
-// ==============================
-// MODELS
-// ==============================
-
-enum Role {
-  USER
-  ADMIN
-  PRO
-  BUSINESS
-}
 model User {
   id            String    @id @default(uuid())
   name          String?
@@ -30,21 +14,22 @@ model User {
   emailVerified DateTime?
   password      String?
   image         String?
-  accounts      Account[]
   customerId    String?
   priceId       String?
   credits       Int       @default(0)
-  role          Role      @default(USER)
   hasAccess     Boolean   @default(false)
   subscribedAt  DateTime?
   createdAt     DateTime  @default(now())
   updatedAt     DateTime  @updatedAt
+  role          Role      @default(USER)
+  planId        String?
+  accounts      Account[]
   blogs         Blog[]
+  plan          Plan?     @relation(fields: [planId], references: [id])
+  leads         Lead[]
 
   @@map("users")
 }
-
-// ... resto de tus modelos
 
 model Account {
   id                String   @id @default(uuid())
@@ -52,17 +37,16 @@ model Account {
   type              String
   provider          String
   providerAccountId String
-  refresh_token     String?  @db.Text
-  access_token      String?  @db.Text
+  refresh_token     String?
+  access_token      String?
   expires_at        Int?
   token_type        String?
   scope             String?
-  id_token          String?  @db.Text
+  id_token          String?
   session_state     String?
   createdAt         DateTime @default(now())
   updatedAt         DateTime @updatedAt
-
-  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  user              User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@unique([provider, providerAccountId])
   @@map("accounts")
@@ -79,35 +63,29 @@ model VerificationToken {
   @@map("verification_tokens")
 }
 
-enum PlanMode {
-  SUBSCRIPTION
-  ONE_TIME_PAYMENT
-}
-
 model Plan {
-  id             String    @id @default(uuid())
-  slug           String    @unique
+  id             String   @id @default(uuid())
+  slug           String   @unique
   title          String
   description    String?
   mode           PlanMode @default(SUBSCRIPTION)
-
   price          Float    @default(0)
   priceId        String?
-
   monthlyCredits Int      @default(0)
   yearlyCredits  Int      @default(0)
-
   monthlyPrice   Float    @default(0)
   yearlyPrice    Float    @default(0)
-
   monthlyPriceId String?
   yearlyPriceId  String?
-
   isActive       Boolean  @default(true)
   canBeDisabled  Boolean  @default(false)
-
   createdAt      DateTime @default(now())
   updatedAt      DateTime @updatedAt
+  hasApiAccess   Boolean  @default(false)
+  hasAvm         Boolean  @default(false)
+  hasLeadScoring Boolean  @default(false)
+  hasLegalAI     Boolean  @default(false)
+  users          User[]
 
   @@map("plans")
 }
@@ -126,11 +104,61 @@ model Blog {
   metaTitle       String?
   metaDescription String?
   metaKeywords    String[]  @default([])
-
   createdAt       DateTime  @default(now())
   updatedAt       DateTime  @updatedAt
-
-  author User @relation(fields: [authorId], references: [id], onDelete: Cascade)
+  author          User      @relation(fields: [authorId], references: [id], onDelete: Cascade)
 
   @@map("blogs")
+}
+
+model Lead {
+  id             String      @id @default(uuid())
+  createdAt      DateTime    @default(now())
+  updatedAt      DateTime    @updatedAt
+
+  // Owner data
+  name           String
+  email          String
+  phone          String?
+
+  // Property data
+  address        String
+  city           String
+  postalCode     String?
+  propertyType   String
+  estimatedValue Float?
+
+  // Intelligence
+  score          Int         @default(0)
+  intentWindow   String?     // "30", "60", "90"
+  status         LeadStatus  @default(NEW)
+
+  // Relations
+  userId         String
+  user           User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([status])
+  @@map("leads")
+}
+
+enum LeadStatus {
+  NEW
+  ANALYZING
+  QUALIFIED
+  CONTACTED
+  WON
+  LOST
+}
+
+enum Role {
+  USER
+  ADMIN
+  PRO
+  BUSINESS
+}
+
+enum PlanMode {
+  SUBSCRIPTION
+  ONE_TIME_PAYMENT
 }

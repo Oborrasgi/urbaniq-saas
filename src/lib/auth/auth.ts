@@ -38,24 +38,50 @@ const nextAuth = NextAuth({
         session.user.name = token.name!;
         session.user.email = token.email!;
         session.user.image = token.image as string;
+
+        // ✅ Attach role and plan capabilities to session
+        session.user.role = token.role as string;
+        session.user.plan = token.plan as any;
       }
 
       return session;
     },
-    async jwt({ token, user, trigger }) {
-      if (trigger === "update" && token && token.sub) {
-        const user = await prisma.user.findUnique({ where: { id: token.sub } });
-        if (!user) return token;
 
-        token.name = user.name;
-        token.image = user.image;
+    async jwt({ token, user, trigger }) {
+      // On initial login
+      if (user) {
+        const dbUser = await prisma.user.findUnique({
+          where: { id: user.id },
+          include: { plan: true }
+        });
+
+        if (dbUser) {
+          token.sub = dbUser.id;
+          token.name = dbUser.name;
+          token.email = dbUser.email;
+          token.image = dbUser.image;
+
+          // ✅ Persist role + plan into JWT
+          token.role = dbUser.role;
+          token.plan = dbUser.plan;
+        }
+
+        return token;
       }
 
-      if (user) {
-        token.sub = user.id;
-        token.name = user.name;
-        token.email = user.email;
-        token.image = user.image;
+      // On manual session update
+      if (trigger === "update" && token?.sub) {
+        const dbUser = await prisma.user.findUnique({
+          where: { id: token.sub },
+          include: { plan: true }
+        });
+
+        if (dbUser) {
+          token.name = dbUser.name;
+          token.image = dbUser.image;
+          token.role = dbUser.role;
+          token.plan = dbUser.plan;
+        }
       }
 
       return token;
@@ -78,3 +104,32 @@ const nextAuth = NextAuth({
 });
 
 export const { handlers, signIn, signOut, auth } = nextAuth;
+
+// ==============================
+// 🔐 NextAuth Type Augmentation
+// ==============================
+
+import type { DefaultSession } from "next-auth";
+import type { Plan, Role } from "@prisma/client";
+
+declare module "next-auth" {
+  interface Session {
+    user: {
+      id: string;
+      role: Role;
+      plan: Plan | null;
+    } & DefaultSession["user"];
+  }
+
+  interface User {
+    role: Role;
+    plan?: Plan | null;
+  }
+}
+
+declare module "next-auth/jwt" {
+  interface JWT {
+    role?: Role;
+    plan?: Plan | null;
+  }
+}

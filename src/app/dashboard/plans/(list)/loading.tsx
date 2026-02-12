@@ -8,8 +8,15 @@ import {
   TableHeader,
   TableRow
 } from "@/components/ui/table";
+import { redirect } from "next/navigation";
+import { getCurrentUser } from "@/lib/auth";
 
-export default function PlansLoading() {
+export default async function PlansLoading() {
+  const user = await getCurrentUser();
+
+  if (!user || user.role !== "ADMIN") {
+    redirect("/dashboard");
+  }
   return (
     <div className="space-y-6">
       <DashboardTitle heading="Pricing Plans" text="Manage your pricing plans for your system" />

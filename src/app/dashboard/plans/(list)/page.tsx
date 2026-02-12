@@ -4,6 +4,8 @@ import { DashboardTitle } from "@/components/dashboard-title";
 import { PlanTable } from "@/components/plans";
 import { createMetadata } from "@/lib/metadata";
 import { getPlans } from "@/lib/plans";
+import { getCurrentUser } from "@/lib/auth";
+import { redirect } from "next/navigation";
 
 export const metadata: Metadata = createMetadata({
   title: "Pricing Plans | Dashboard",
@@ -11,6 +13,12 @@ export const metadata: Metadata = createMetadata({
 });
 
 export default async function PlansPage() {
+  const currentUser = await getCurrentUser();
+
+  if (!currentUser || currentUser.role !== "ADMIN") {
+    redirect("/dashboard");
+  }
+
   const plans = await getPlans();
 
   return (

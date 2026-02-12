@@ -44,9 +44,15 @@ export const authConfig = {
             throw new Error("Invalid email or password");
           }
 
-          // Return user object (omit password)
-          const { password, ...userWithoutPassword } = user;
-          return userWithoutPassword;
+          // Return minimal safe user object for JWT (NextAuth v5 strict mode)
+          return {
+            id: user.id,
+            name: user.name,
+            email: user.email,
+            image: user.image,
+            role: user.role,
+            planId: user.planId
+          };
         } catch (error) {
           const message = error instanceof Error ? error.message : "Invalid email or password";
           throw new InvalidLoginError(message);

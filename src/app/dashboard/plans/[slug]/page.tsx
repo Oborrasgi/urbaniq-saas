@@ -1,10 +1,11 @@
 import { type Metadata } from "next";
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 
 import { DashboardTitle } from "@/components/dashboard-title";
 import { PlanForm } from "@/components/forms/plans";
 import { createMetadata } from "@/lib/metadata";
 import { getPlanBySlug } from "@/lib/plans";
+import { getCurrentUser } from "@/lib/auth";
 
 export const metadata: Metadata = createMetadata({
   title: "Edit Plan | Dashboard",
@@ -16,6 +17,12 @@ interface PlanEditPageProps {
 }
 
 export default async function PlanEditPage({ params }: PlanEditPageProps) {
+  const currentUser = await getCurrentUser();
+
+  if (!currentUser || currentUser.role !== "ADMIN") {
+    redirect("/dashboard");
+  }
+
   const { slug } = await params;
   const plan = await getPlanBySlug(slug);
 
