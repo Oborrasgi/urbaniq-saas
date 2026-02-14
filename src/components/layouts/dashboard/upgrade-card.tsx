@@ -14,23 +14,27 @@ export function UpgradeCard() {
   if (state === "collapsed") return null;
 
   return (
-    <Card className="bg-muted/50 rounded-lg border-1 p-4 shadow-none">
-      <CardHeader className="px-0">
-        <CardTitle className="flex gap-4">
-          <Crown size={16} className="text-primary" />
-          <span className="text-primary text-sm font-medium">On Trial</span>
+    <Card className="bg-gradient-to-br from-primary/10 via-background to-background rounded-xl border border-primary/20 p-4 shadow-sm">
+      <CardHeader className="px-0 space-y-2">
+        <CardTitle className="flex items-center gap-2 text-sm font-semibold text-primary">
+          <Crown size={16} />
+          UrbanIQ Pro
         </CardTitle>
 
-        <CardDescription className="text-muted-foreground text-sm">
-          Unlock all features and get unlimited access to our support team.
+        <CardDescription className="text-muted-foreground text-sm leading-relaxed">
+          Activa AVM avanzado, Legal AI y Lead Scoring inteligente para maximizar
+          tu captación inmobiliaria.
         </CardDescription>
       </CardHeader>
 
-      <CardContent className="px-0 pt-2">
+      <CardContent className="px-0 pt-3">
         <Link href="/dashboard/billing">
-          <Button size="sm" className="w-full">
-            Upgrade
-            <ArrowRight size={14} className="transition-transform group-hover:translate-x-0.5" />
+          <Button size="sm" className="w-full group">
+            Upgrade to Pro
+            <ArrowRight
+              size={14}
+              className="ml-2 transition-transform duration-200 group-hover:translate-x-1"
+            />
           </Button>
         </Link>
       </CardContent>

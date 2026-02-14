@@ -23,30 +23,31 @@ import {
   TableRow
 } from "@/components/ui/table";
 import { cn } from "@/lib/utils";
-import { User } from "@/types/user";
+import { Lead } from "@prisma/client";
 
-interface UserTableProps {
-  users: User[];
+interface LeadTableProps {
+  leads: Lead[];
   className?: string;
-  onDelete?: (user: User) => void;
+  onDelete?: (lead: Lead) => void;
 }
 
-export function UserTable({ users, onDelete, className }: UserTableProps) {
+export function LeadTable({ leads, onDelete, className }: LeadTableProps) {
   const [searchTerm, setSearchTerm] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const [pageSize, setPageSize] = useState(10);
 
-  // Filter users based on search term (name and email)
+  // Filter leads based on search term (name, email, city)
   const filteredUsers = useMemo(() => {
-    if (!searchTerm) return users;
+    if (!searchTerm) return leads;
 
     const lowercaseSearch = searchTerm.toLowerCase();
-    return users.filter((user) => {
-      const nameMatch = user.name?.toLowerCase().includes(lowercaseSearch) || false;
-      const emailMatch = user.email?.toLowerCase().includes(lowercaseSearch) || false;
-      return nameMatch || emailMatch;
+    return leads.filter((lead) => {
+      const nameMatch = lead.name?.toLowerCase().includes(lowercaseSearch) || false;
+      const emailMatch = lead.email?.toLowerCase().includes(lowercaseSearch) || false;
+      const cityMatch = lead.city?.toLowerCase().includes(lowercaseSearch) || false;
+      return nameMatch || emailMatch || cityMatch;
     });
-  }, [users, searchTerm]);
+  }, [leads, searchTerm]);
 
   // Calculate pagination
   const totalUsers = filteredUsers.length;
@@ -71,17 +72,6 @@ export function UserTable({ users, onDelete, className }: UserTableProps) {
 
   const goToPage = (page: number) => {
     setCurrentPage(Math.max(1, Math.min(page, totalPages)));
-  };
-
-  const formatDisplayDate = (date: Date | null): string => {
-    if (!date) return "Never";
-    return new Date(date).toLocaleDateString("en-US", {
-      year: "numeric",
-      month: "short",
-      day: "numeric",
-      hour: "2-digit",
-      minute: "2-digit"
-    });
   };
 
   return (
@@ -120,10 +110,11 @@ export function UserTable({ users, onDelete, className }: UserTableProps) {
           <Table>
             <TableHeader>
               <TableRow>
-                <TableHead className="h-12 px-4">Name</TableHead>
+                <TableHead className="h-12 px-4">Owner</TableHead>
                 <TableHead className="h-12 px-4">Email</TableHead>
-                <TableHead className="h-12 px-4 text-center">Verified</TableHead>
-                <TableHead className="h-12 px-4 text-center">Subscribed At</TableHead>
+                <TableHead className="h-12 px-4">City</TableHead>
+                <TableHead className="h-12 px-4 text-center">Score</TableHead>
+                <TableHead className="h-12 px-4 text-center">Status</TableHead>
                 <TableHead className="h-12 px-4 text-center">Actions</TableHead>
               </TableRow>
             </TableHeader>
@@ -131,31 +122,33 @@ export function UserTable({ users, onDelete, className }: UserTableProps) {
             <TableBody>
               {paginatedUsers.length === 0 ? (
                 <TableRow>
-                  <TableCell colSpan={5} className="text-muted-foreground py-8 text-center">
-                    {searchTerm ? "No users found matching your search." : "No users available."}
+                  <TableCell colSpan={6} className="text-muted-foreground py-8 text-center">
+                    {searchTerm ? "No leads found matching your search." : "No leads available."}
                   </TableCell>
                 </TableRow>
               ) : (
-                paginatedUsers.map((user) => (
-                  <TableRow key={user.id}>
+                paginatedUsers.map((lead) => (
+                  <TableRow key={lead.id}>
                     <TableCell className="p-4 font-medium">
-                      {user.name || "No name provided"}
+                      {lead.name}
                     </TableCell>
 
-                    <TableCell className="p-4">{user.email || "No email provided"}</TableCell>
+                    <TableCell className="p-4">
+                      {lead.email}
+                    </TableCell>
+
+                    <TableCell className="p-4">
+                      {lead.city}
+                    </TableCell>
 
                     <TableCell className="p-4 text-center">
-                      <Badge variant={user.emailVerified ? "default" : "secondary"}>
-                        {user.emailVerified ? "Verified" : "Unverified"}
+                      <Badge variant="outline">{lead.score}</Badge>
+                    </TableCell>
+
+                    <TableCell className="p-4 text-center">
+                      <Badge variant={lead.status === "QUALIFIED" ? "default" : "secondary"}>
+                        {lead.status}
                       </Badge>
-                    </TableCell>
-
-                    <TableCell className="p-4 text-center">
-                      {user.subscribedAt ? (
-                        <span>{formatDisplayDate(user.subscribedAt)}</span>
-                      ) : (
-                        <Badge variant="outline">Not Subscribed</Badge>
-                      )}
                     </TableCell>
 
                     <TableCell className="p-4 text-center">
@@ -163,11 +156,11 @@ export function UserTable({ users, onDelete, className }: UserTableProps) {
                         <Button
                           size="sm"
                           variant="outline"
-                          title="Delete User"
-                          onClick={() => onDelete(user)}
+                          title="Delete Lead"
+                          onClick={() => onDelete(lead)}
                         >
                           <Trash2 className="text-destructive size-4" />
-                          <span className="sr-only">Delete user</span>
+                          <span className="sr-only">Delete lead</span>
                         </Button>
                       )}
                     </TableCell>

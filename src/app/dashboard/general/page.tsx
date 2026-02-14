@@ -7,7 +7,8 @@ import { getCurrentUser } from "@/lib/auth";
 import { createMetadata } from "@/lib/metadata";
 
 export const metadata: Metadata = createMetadata({
-  title: "General Settings | Next.js SaaS Starter Kit Boilerplate"
+  title: "Configuración general | UrbanIQ Dashboard",
+  description: "Gestiona la información principal de tu cuenta en UrbanIQ."
 });
 
 export default async function GeneralSettingsPage() {

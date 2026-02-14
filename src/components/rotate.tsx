@@ -1,15 +1,33 @@
 "use client";
 
-import { motion } from "motion/react";
-import type { PropsWithChildren } from "react";
+import { motion, type HTMLMotionProps } from "motion/react";
+import type { ReactNode } from "react";
 
-export function Rotate({ children }: PropsWithChildren) {
+interface RotateProps extends HTMLMotionProps<"div"> {
+  children?: ReactNode;
+  from?: number;        // initial rotation in degrees
+  to?: number;          // final rotation in degrees
+  duration?: number;
+  delay?: number;
+  once?: boolean;
+}
+
+export function Rotate({
+  children,
+  from = 6,
+  to = 0,
+  duration = 0.3,
+  delay = 0.2,
+  once = true,
+  ...props
+}: RotateProps) {
   return (
     <motion.div
-      initial={{ rotate: "6deg" }}
-      whileInView={{ rotate: "0deg" }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.3, ease: "easeInOut", delay: 0.2 }}
+      initial={{ rotate: `${from}deg` }}
+      whileInView={{ rotate: `${to}deg` }}
+      viewport={{ once }}
+      transition={{ duration, ease: "easeInOut", delay }}
+      {...props}
     >
       {children}
     </motion.div>

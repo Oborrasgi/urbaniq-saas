@@ -7,7 +7,7 @@ import { getCurrentUser } from "@/lib/auth";
 import { createMetadata } from "@/lib/metadata";
 
 export const metadata: Metadata = createMetadata({
-  title: "Subscription & Billing | UrbanIQ"
+  title: "Billing Settings | Next.js SaaS Starter Kit Boilerplate"
 });
 
 export default async function BillingSettingsPage() {

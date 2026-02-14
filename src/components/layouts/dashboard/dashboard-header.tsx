@@ -5,13 +5,26 @@ import { SidebarTrigger } from "@/components/ui/sidebar";
 
 export function DashboardHeader() {
   return (
-    <header className="bg-background/40 sticky top-0 z-50 backdrop-blur-sm">
+    <header className="sticky top-0 z-50 border-b bg-background/70 backdrop-blur-md">
       <div className="container mx-auto flex items-center justify-between py-4">
-        <div className="flex grow items-center gap-4">
-          <SidebarTrigger className="text-muted-foreground size-8 p-0! [&_svg]:size-5!" />
+        
+        {/* Left section */}
+        <div className="flex items-center gap-4">
+          <SidebarTrigger className="size-8 text-muted-foreground [&_svg]:size-5" />
+          
+          <div className="flex flex-col">
+            <span className="text-sm font-semibold tracking-tight">
+              UrbanIQ
+            </span>
+            <span className="text-muted-foreground text-xs">
+              AI Real Estate Intelligence
+            </span>
+          </div>
+
           <CommandMenu />
         </div>
 
+        {/* Right section */}
         <div className="flex items-center gap-4">
           <ModeToggle />
           <NavUser />

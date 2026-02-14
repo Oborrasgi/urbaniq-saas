@@ -1,5 +1,5 @@
-import { Loader, X } from "lucide-react";
-import { useState } from "react";
+import { Loader, UploadCloud, X } from "lucide-react";
+import { useEffect, useId, useState } from "react";
 
 import { uploadFileToStorage } from "@/actions/file-actions";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
@@ -12,17 +12,26 @@ interface InputFileProps {
   onChange?: (url: string) => void;
   value?: string;
   error?: boolean;
+  disabled?: boolean;
 }
 
 export function InputFile({
   label = "Upload File",
-  description = "Click to upload your svg, png, jpg or gif file",
+  description = "SVG, PNG, JPG or GIF. Max 5MB.",
   onChange,
   value,
-  error
+  error,
+  disabled
 }: InputFileProps) {
+  const inputId = useId();
+
   const [previewUrl, setPreviewUrl] = useState<string | null>(value || null);
   const [isUploading, setIsUploading] = useState(false);
+
+  // Sync external value changes (important for form reset/edit mode)
+  useEffect(() => {
+    setPreviewUrl(value || null);
+  }, [value]);
 
   const handleFileChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
@@ -30,6 +39,7 @@ export function InputFile({
 
     try {
       setIsUploading(true);
+
       const result = await uploadFileToStorage(file);
 
       if (result.status === "success" && result.data?.url) {
@@ -49,54 +59,47 @@ export function InputFile({
   };
 
   return (
-    <div>
+    <div className="space-y-4">
       <label
-        htmlFor="dropzone-file"
+        htmlFor={inputId}
         className={cn(
-          "border-border bg-card hover:border-primary mx-auto mt-2 flex w-full cursor-pointer flex-col items-center rounded-lg border border-dashed p-6 text-center transition-colors",
-          error && "border-destructive bg-destructive/5 hover:border-destructive"
+          "border-border bg-card hover:border-primary group relative flex w-full cursor-pointer flex-col items-center justify-center rounded-xl border border-dashed p-8 text-center transition-all duration-200",
+          "hover:bg-muted/40",
+          error && "border-destructive bg-destructive/5 hover:border-destructive",
+          (disabled || isUploading) && "pointer-events-none opacity-60"
         )}
       >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          strokeWidth="1.5"
-          stroke="currentColor"
-          className="text-muted-foreground size-8"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="M12 16.5V9.75m0 0l3 3m-3-3l-3 3M6.75 19.5a4.5 4.5 0 01-1.41-8.775 5.25 5.25 0 0110.233-2.33 3 3 0 013.758 3.848A3.752 3.752 0 0118 19.5H6.75z"
-          />
-        </svg>
+        <UploadCloud className="text-muted-foreground group-hover:text-primary size-10 transition-colors" />
 
-        <h2 className="text-foreground mt-1 font-medium tracking-wide">{label}</h2>
-        <p className="text-muted-foreground mt-2 text-xs tracking-wide">{description}</p>
+        <h2 className="text-foreground mt-3 font-semibold tracking-tight">
+          {isUploading ? "Uploading..." : label}
+        </h2>
+
+        <p className="text-muted-foreground mt-1 text-xs">{description}</p>
 
         <input
-          id="dropzone-file"
+          id={inputId}
           type="file"
           accept="image/*"
           className="hidden"
           onChange={handleFileChange}
-          disabled={isUploading}
+          disabled={isUploading || disabled}
         />
       </label>
 
-      {isUploading && !previewUrl ? (
-        <Avatar className="mt-4 size-24 rounded-xl">
-          <AvatarImage src={undefined} alt="uploading..." />
-          <AvatarFallback>
-            <Loader className="size-4 animate-spin" />
-          </AvatarFallback>
-        </Avatar>
-      ) : null}
-
-      {previewUrl && !isUploading ? (
-        <div className="relative mt-4 size-24">
+      {isUploading && (
+        <div className="flex justify-center">
           <Avatar className="size-24 rounded-xl">
+            <AvatarFallback>
+              <Loader className="size-5 animate-spin" />
+            </AvatarFallback>
+          </Avatar>
+        </div>
+      )}
+
+      {previewUrl && !isUploading && (
+        <div className="relative mx-auto size-28">
+          <Avatar className="size-28 rounded-2xl border">
             <AvatarImage src={previewUrl} alt="Preview" />
             <AvatarFallback>
               <Loader className="size-4 animate-spin" />
@@ -104,15 +107,16 @@ export function InputFile({
           </Avatar>
 
           <Button
+            type="button"
             size="icon"
             variant="destructive"
-            className="absolute top-1 right-1 size-4"
+            className="absolute -top-2 -right-2 size-7 rounded-full shadow"
             onClick={handleRemove}
           >
-            <X className="size-3" />
+            <X className="size-4" />
           </Button>
         </div>
-      ) : null}
+      )}
     </div>
   );
 }

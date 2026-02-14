@@ -4,7 +4,7 @@ import { DeleteAccountForm } from "@/components/forms/delete-account";
 import { createMetadata } from "@/lib/metadata";
 
 export const metadata: Metadata = createMetadata({
-  title: "Delete Account | Next.js SaaS Starter Kit Boilerplate"
+  title: "Eliminar cuenta | UrbanIQ Dashboard"
 });
 
 export default function DangerSettingsPage() {

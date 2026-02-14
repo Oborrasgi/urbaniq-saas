@@ -26,11 +26,11 @@ export function PlanTable({ plans }: PlanTableProps) {
       <Table>
         <TableHeader>
           <TableRow>
-            <TableHead className="h-12 px-4">Plan Name</TableHead>
+            <TableHead className="h-12 px-4">Plan</TableHead>
             <TableHead className="h-12 px-4">Type</TableHead>
-            <TableHead className="h-12 px-4">Monthly Price</TableHead>
-            <TableHead className="h-12 px-4">Annual Price</TableHead>
-            <TableHead className="h-12 px-4">One-time Price</TableHead>
+            <TableHead className="h-12 px-4">Monthly (€)</TableHead>
+            <TableHead className="h-12 px-4">Annual (€)</TableHead>
+            <TableHead className="h-12 px-4">One-time (€)</TableHead>
             <TableHead className="h-12 px-4">Status</TableHead>
             <TableHead className="h-12 px-4 text-center">Actions</TableHead>
           </TableRow>
@@ -46,7 +46,14 @@ export function PlanTable({ plans }: PlanTableProps) {
           ) : (
             plans.map((plan) => (
               <TableRow key={plan.id}>
-                <TableCell className="p-4 font-medium">{plan.title}</TableCell>
+                <TableCell className="p-4 font-medium">
+                  <div className="flex items-center gap-2">
+                    {plan.title}
+                    {plan.title !== "Pro" && (
+                      <Badge variant="secondary">Coming Soon</Badge>
+                    )}
+                  </div>
+                </TableCell>
                 <TableCell className="p-4">{plan.mode}</TableCell>
 
                 <PriceCell
@@ -78,7 +85,7 @@ export function PlanTable({ plans }: PlanTableProps) {
                     </Button>
                   </Link>
 
-                  <PlanDeleteButton slug={plan.slug} />
+                  {plan.title !== "Pro" && <PlanDeleteButton slug={plan.slug} />}
                 </TableCell>
               </TableRow>
             ))
@@ -92,7 +99,7 @@ export function PlanTable({ plans }: PlanTableProps) {
 function PriceCell({ isVisible, price }: { isVisible: boolean; price: number }) {
   return (
     <TableCell className="p-4">
-      {isVisible ? `$${price}` : <span className="text-muted-foreground">—</span>}
+      {isVisible ? `${price}€` : <span className="text-muted-foreground">—</span>}
     </TableCell>
   );
 }

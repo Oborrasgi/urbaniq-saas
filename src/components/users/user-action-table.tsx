@@ -14,6 +14,7 @@ import {
 } from "@/components/ui/dialog";
 import { UserTable } from "@/components/users/user-table";
 import { User } from "@/types/user";
+import { deleteUser } from "@/actions/users/delete-user";
 
 interface UsersTableProps {
   users: User[];
@@ -33,11 +34,7 @@ export function UserActionTable({ users: initialUsers }: UsersTableProps) {
 
     startTransition(async () => {
       try {
-        // TODO: Implement delete user
-        // const result = await deleteUser(userToDelete.id);
-
-        // TODO: Remove this
-        const result = { success: true, error: null };
+        const result = await deleteUser(userToDelete.id);
 
         if (result.success) {
           setUsers((prev) => prev.filter((u) => u.id !== userToDelete.id));

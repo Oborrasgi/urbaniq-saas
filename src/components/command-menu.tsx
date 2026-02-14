@@ -26,19 +26,46 @@ import {
   CommandSeparator
 } from "@/components/ui/command";
 
-const commandMenuItems = [
-  {
-    title: "Recent",
-    navGroup: [
-      { title: "Dashboard", url: "/dashboard", icon: LayoutDashboard },
-      { title: "General", url: "/dashboard/general", icon: Settings },
-      { title: "Billing", url: "/dashboard/billing", icon: CreditCard },
-      { title: "Danger", url: "/dashboard/delete", icon: CircleAlert }
-    ]
-  }
-];
+type CommandCapabilities = {
+  isAdmin?: boolean;
+  hasBilling?: boolean;
+};
 
-export function CommandMenu() {
+function buildCommandMenuItems(capabilities?: CommandCapabilities) {
+  const baseItems = [
+    { title: "Dashboard", url: "/dashboard", icon: LayoutDashboard },
+    { title: "General", url: "/dashboard/general", icon: Settings }
+  ];
+
+  if (capabilities?.hasBilling) {
+    baseItems.push({
+      title: "Billing",
+      url: "/dashboard/billing",
+      icon: CreditCard
+    });
+  }
+
+  if (capabilities?.isAdmin) {
+    baseItems.push({
+      title: "Danger",
+      url: "/dashboard/delete",
+      icon: CircleAlert
+    });
+  }
+
+  return [
+    {
+      title: "Navigation",
+      navGroup: baseItems
+    }
+  ];
+}
+
+interface CommandMenuProps {
+  capabilities?: CommandCapabilities;
+}
+
+export function CommandMenu({ capabilities }: CommandMenuProps) {
   const router = useRouter();
   const { setTheme } = useTheme();
   const [open, setOpen] = useState<boolean>(false);
@@ -93,7 +120,7 @@ export function CommandMenu() {
           </CommandEmpty>
 
           {/* Please pass you nav data here  */}
-          {commandMenuItems.map((group) => (
+          {buildCommandMenuItems(capabilities).map((group) => (
             <CommandGroup className="cursor-pointer" key={group.title} heading={group.title}>
               {group.navGroup.map((nav, i) => (
                 <CommandItem

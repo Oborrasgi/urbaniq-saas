@@ -11,59 +11,67 @@ import {
   SidebarMenuButton,
   SidebarMenuItem
 } from "@/components/ui/sidebar";
+
 import { appConfig } from "@/config";
 import { getCurrentUser } from "@/lib/auth";
 
 import { SidebarNavItems } from "./sidebar-nav-items";
 import { UpgradeCard } from "./upgrade-card";
 
-export async function DashboardSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
+export async function DashboardSidebar(
+  props: React.ComponentProps<typeof Sidebar>
+) {
   const currentUser = await getCurrentUser();
+
   if (!currentUser) {
     redirect(appConfig.auth.login);
   }
-  const capabilities = {
-    isAdmin: currentUser.role === "ADMIN",
-
-    // Admin-only management
-    canManagePlans: currentUser.role === "ADMIN",
-    canManageBlog: currentUser.role === "ADMIN",
-
-    // Plan-based operational features
-    hasAvm: currentUser.plan?.hasAvm ?? false,
-    hasLegalAI: currentUser.plan?.hasLegalAI ?? false,
-    hasLeadScoring: currentUser.plan?.hasLeadScoring ?? false,
-    hasApiAccess: currentUser.plan?.hasApiAccess ?? false,
-  };
 
   return (
     <Sidebar collapsible="icon" variant="sidebar" side="left" {...props}>
+      
+      {/* ============================= */}
+      {/* HEADER (UrbanIQ Branding) */}
+      {/* ============================= */}
       <SidebarHeader>
         <SidebarMenu>
           <SidebarMenuItem>
-            <Link href="/">
-              <SidebarMenuButton size="lg">
-                <div className="flex aspect-square size-7 items-center justify-center rounded-lg">
+            <Link href="/dashboard">
+              <SidebarMenuButton size="lg" className="gap-3">
+                <div className="flex aspect-square size-8 items-center justify-center rounded-xl bg-primary/10">
                   <Image
-                    width={32}
-                    height={32}
+                    width={28}
+                    height={28}
                     src="/logo.png"
-                    alt="SaasPilot - Next.js saas starter kit"
+                    alt="UrbanIQ Logo"
                   />
                 </div>
 
-                <span className="truncate text-xl font-extrabold">{appConfig.appName}</span>
+                <div className="flex flex-col text-left leading-tight">
+                  <span className="truncate text-lg font-semibold tracking-tight">
+                    UrbanIQ
+                  </span>
+                  <span className="text-muted-foreground text-xs">
+                    Real Estate Intelligence
+                  </span>
+                </div>
               </SidebarMenuButton>
             </Link>
           </SidebarMenuItem>
         </SidebarMenu>
       </SidebarHeader>
 
+      {/* ============================= */}
+      {/* NAVIGATION */}
+      {/* ============================= */}
       <SidebarContent>
-        <SidebarNavItems capabilities={capabilities} />
+        <SidebarNavItems />
       </SidebarContent>
 
-      <SidebarFooter className="overflow-hidden">
+      {/* ============================= */}
+      {/* FOOTER (Upgrade Area) */}
+      {/* ============================= */}
+      <SidebarFooter className="overflow-hidden p-3">
         {!currentUser?.hasAccess && <UpgradeCard />}
       </SidebarFooter>
     </Sidebar>

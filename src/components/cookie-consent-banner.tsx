@@ -9,17 +9,33 @@ import { appConfig } from "@/config";
 
 export function CookieConsentBanner() {
   const [isVisible, setIsVisible] = useState(false);
+  const cookieKey = appConfig.googleAnalytics.consent.cookieName;
 
   useEffect(() => {
-    // Check if user has already made a choice
-    const hasConsent = localStorage.getItem(appConfig.googleAnalytics.consent.cookieName);
-    if (!hasConsent) {
-      setIsVisible(true);
+    if (typeof window === "undefined") return;
+
+    // Default deny until user explicitly accepts (GDPR compliant)
+    if (window.gtag) {
+      window.gtag("consent", "default", {
+        analytics_storage: "denied",
+        ad_storage: "denied"
+      });
     }
-  }, []);
+
+    const savedConsent = localStorage.getItem(cookieKey);
+
+    if (!savedConsent) {
+      setIsVisible(true);
+    } else if (savedConsent === "accepted" && window.gtag) {
+      window.gtag("consent", "update", {
+        analytics_storage: "granted",
+        ad_storage: "granted"
+      });
+    }
+  }, [cookieKey]);
 
   const handleAccept = useCallback(() => {
-    localStorage.setItem(appConfig.googleAnalytics.consent.cookieName, "accepted");
+    localStorage.setItem(cookieKey, "accepted");
     setIsVisible(false);
 
     // Here you can initialize your analytics/tracking
@@ -30,10 +46,10 @@ export function CookieConsentBanner() {
         ad_storage: "granted"
       });
     }
-  }, []);
+  }, [cookieKey]);
 
   const handleDecline = useCallback(() => {
-    localStorage.setItem(appConfig.googleAnalytics.consent.cookieName, "declined");
+    localStorage.setItem(cookieKey, "declined");
     setIsVisible(false);
 
     // Disable analytics/tracking
@@ -43,7 +59,7 @@ export function CookieConsentBanner() {
         ad_storage: "denied"
       });
     }
-  }, []);
+  }, [cookieKey]);
 
   const handleDismiss = useCallback(() => {
     setIsVisible(false);
@@ -95,7 +111,19 @@ export function CookieConsentBanner() {
               id="cookie-consent-description"
               className="text-muted-foreground mb-4 text-sm leading-relaxed"
             >
-              This site doesn't use cookies yet, but we added this banner to demo it to you.
+              We use analytics cookies to understand how visitors interact with UrbanIQ.
+              These cookies help us improve performance, features, and user experience.
+              You can accept or decline optional tracking at any time.
+            </p>
+
+            <p className="text-muted-foreground mb-4 text-xs">
+              By clicking "Accept", you agree to our{" "}
+              <a
+                href="/privacy"
+                className="text-primary underline underline-offset-4 hover:opacity-80"
+              >
+                Privacy Policy
+              </a>.
             </p>
 
             {/* Action buttons */}

@@ -1,14 +1,21 @@
-import { Fragment, type PropsWithChildren } from "react";
+import type { PropsWithChildren } from "react";
 
 import Footer from "./footer";
 import Header from "./header";
 
 export default function MainLayout({ children }: PropsWithChildren) {
   return (
-    <Fragment>
+    <div className="flex min-h-screen flex-col">
+      {/* Header */}
       <Header />
-      {children}
+
+      {/* Main Content */}
+      <main className="flex-1">
+        {children}
+      </main>
+
+      {/* Footer */}
       <Footer />
-    </Fragment>
+    </div>
   );
 }

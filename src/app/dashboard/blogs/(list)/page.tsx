@@ -6,8 +6,8 @@ import { getBlogs } from "@/lib/blogs";
 import { createMetadata } from "@/lib/metadata";
 
 export const metadata: Metadata = createMetadata({
-  title: "Contenido & Insights | UrbanIQ",
-  description: "Gestiona artículos, análisis y contenido estratégico generado para UrbanIQ."
+  title: "Artículos | UrbanIQ Dashboard",
+  description: "Gestiona los artículos y contenidos del blog de UrbanIQ"
 });
 
 export default async function BlogsPage() {
@@ -16,8 +16,8 @@ export default async function BlogsPage() {
   return (
     <div className="space-y-6">
       <DashboardTitle
-        heading="Contenido & Insights"
-        text="Gestiona artículos, análisis legales e inteligencia inmobiliaria generada con IA."
+        heading="Artículos"
+        text="Gestiona los contenidos del blog y recursos inmobiliarios de UrbanIQ"
       />
       <BlogTable blogs={blogs} />
     </div>

@@ -27,55 +27,55 @@ const plans: Plan[] = [
   {
     recommended: false,
     title: "Starter",
-    price: 30,
-    priceId: appConfig.stripe.plans[0].priceId,
-    description: "Para explorar UrbanIQ y validar oportunidades inmobiliarias.",
+    price: 80,
+    priceId: "",
+    description: "Plan para brokers hipotecarios. Próximamente disponible.",
     priceTagline: "mes",
     features: [
-      { title: "Acceso limitado a IA de captación" },
-      { title: "Valoración orientativa (AVM básico)" },
-      { title: "Análisis legal simplificado" },
+      { title: "Leads exclusivos de hipotecas" },
+      { title: "Scoring básico de solvencia" },
+      { title: "Panel de gestión de oportunidades" },
       { title: "1 zona geográfica" },
       { title: "Soporte estándar" },
-      { title: "Predicción de intención de venta", isIncluded: false },
-      { title: "Distribución exclusiva de leads", isIncluded: false },
+      { title: "IA inmobiliaria avanzada", isIncluded: false },
+      { title: "Marketplace de partners", isIncluded: false },
       { title: "API & automatizaciones", isIncluded: false }
     ]
   },
   {
     recommended: true,
     title: "Pro",
-    price: 80,
+    price: 100,
     priceId: appConfig.stripe.plans[1].priceId,
-    description: "Para agentes e inversores que necesitan decisiones fiables.",
+    description: "Plan profesional completo con todas las funcionalidades de UrbanIQ.",
     priceTagline: "mes",
     features: [
       { title: "IA avanzada de captación de propietarios" },
       { title: "Valoración AVM con rango y confianza" },
       { title: "Análisis legal automatizado" },
       { title: "Historial y scoring de leads" },
-      { title: "Hasta 5 zonas geográficas" },
-      { title: "Predicción de intención 30/60/90 días", isIncluded: true },
-      { title: "Distribución exclusiva de leads", isIncluded: false },
-      { title: "API & automatizaciones básicas", isIncluded: true }
+      { title: "Zonas geográficas ilimitadas" },
+      { title: "Predicción de intención 30/60/90/180 días" },
+      { title: "Distribución exclusiva de leads" },
+      { title: "API & automatizaciones completas" },
+      { title: "Marketplace de partners" },
+      { title: "SLA prioritario" }
     ]
   },
   {
     recommended: false,
     title: "Business",
-    price: 200,
-    priceId: appConfig.stripe.plans[2].priceId,
-    description: "Para equipos inmobiliarios y despachos profesionales.",
+    price: 300,
+    priceId: "",
+    description: "Para grandes equipos inmobiliarios y estructuras multiagente. Próximamente disponible.",
     priceTagline: "mes",
     features: [
       { title: "Todo lo incluido en Pro" },
-      { title: "Predicción avanzada de intención de venta" },
-      { title: "Distribución exclusiva de leads" },
-      { title: "Panel multiusuario" },
-      { title: "Integraciones y API completa" },
-      { title: "Marketplace de partners" },
-      { title: "SLA prioritario" },
-      { title: "Soporte dedicado" }
+      { title: "Panel multiusuario avanzado" },
+      { title: "Gestión de equipos y permisos" },
+      { title: "Integraciones enterprise" },
+      { title: "Marketplace prioritario" },
+      { title: "SLA dedicado" }
     ]
   }
 ];
@@ -182,7 +182,16 @@ function PlanCard({ plan }: { plan: Plan }) {
       </div>
 
       <div className="px-6 pb-6">
-        <PurchaseButton priceId={plan.priceId} />
+        {plan.priceId ? (
+          <PurchaseButton priceId={plan.priceId} />
+        ) : (
+          <button
+            disabled
+            className="w-full rounded-lg border py-2 text-sm font-medium opacity-60 cursor-not-allowed"
+          >
+            Coming Soon
+          </button>
+        )}
       </div>
     </div>
   );

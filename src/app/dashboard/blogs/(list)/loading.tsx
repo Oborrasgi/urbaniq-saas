@@ -9,20 +9,20 @@ import {
   TableRow
 } from "@/components/ui/table";
 
-export default function BLogsLoading() {
+export default function BlogsLoading() {
   return (
     <div className="space-y-6">
-      <DashboardTitle heading="Blogs" text="Manage your blogs for your system" />
+      <DashboardTitle heading="Artículos" text="Gestiona los artículos del blog de UrbanIQ" />
 
       <div className="rounded-md border">
         <Table>
           <TableHeader>
             <TableRow>
-              <TableHead className="h-12 px-4">Title</TableHead>
-              <TableHead className="h-12 px-4">Description</TableHead>
-              <TableHead className="h-12 px-4">Created At</TableHead>
-              <TableHead className="h-12 px-4">Status</TableHead>
-              <TableHead className="h-12 px-4 text-center">Actions</TableHead>
+              <TableHead className="h-12 px-4">Título</TableHead>
+              <TableHead className="h-12 px-4">Descripción</TableHead>
+              <TableHead className="h-12 px-4">Fecha de creación</TableHead>
+              <TableHead className="h-12 px-4">Estado</TableHead>
+              <TableHead className="h-12 px-4 text-center">Acciones</TableHead>
             </TableRow>
           </TableHeader>
 

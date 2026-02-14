@@ -20,20 +20,12 @@ import { getCurrentUser } from "@/lib/auth";
 import { cn } from "@/lib/utils";
 
 const headerMenu = [
-  {
-    id: 1,
-    name: "Home",
-    children: [
-      { id: 11, name: "Landing 1", href: "/" },
-      { id: 12, name: "Landing 2", href: "/landing-1" }
-    ]
-  },
-  { id: 2, name: "Pricing", href: "#pricing" },
-  { id: 3, name: "Features", href: "#features" },
-  // { id: 4, name: "FAQ", href: "#faq" },
-  // { id: 5, name: "Wall of Love", href: "#wall-of-love" },
-  { id: 6, name: "Contact", href: "/contact" },
-  { id: 7, name: "Blogs", href: "/blogs" }
+  { id: 1, name: "Inicio", href: "/" },
+  { id: 2, name: "Soluciones", href: "#features" },
+  { id: 3, name: "Precios", href: "#pricing" },
+  { id: 4, name: "Legal AI", href: "#legal-ai" },
+  { id: 5, name: "Contacto", href: "/contact" },
+  { id: 6, name: "Blog", href: "/blogs" }
 ];
 
 export default async function Header() {
@@ -94,7 +86,7 @@ export default async function Header() {
                   href={appConfig.auth.afterLogin}
                   className={buttonVariants({ variant: "default" })}
                 >
-                  Dashboard
+                  Panel
                 </Link>
               ) : (
                 <Fragment>
@@ -102,13 +94,13 @@ export default async function Header() {
                     href={appConfig.auth.login}
                     className={buttonVariants({ variant: "ghost" })}
                   >
-                    Log in
+                    Iniciar sesión
                   </Link>
                   <Link
                     href={appConfig.auth.signUp}
                     className={buttonVariants({ variant: "default" })}
                   >
-                    Register
+                    Crear cuenta
                   </Link>
                 </Fragment>
               )}
@@ -156,7 +148,7 @@ export default async function Header() {
                         href={appConfig.auth.afterLogin}
                         className={buttonVariants({ variant: "default" })}
                       >
-                        Dashboard
+                        Panel
                       </Link>
                     ) : (
                       <>
@@ -164,14 +156,14 @@ export default async function Header() {
                           href={appConfig.auth.login}
                           className={buttonVariants({ variant: "secondary" })}
                         >
-                          Log in
+                          Iniciar sesión
                         </Link>
 
                         <Link
                           href={appConfig.auth.signUp}
                           className={buttonVariants({ variant: "default" })}
                         >
-                          Get Started
+                          Crear cuenta
                         </Link>
                       </>
                     )}

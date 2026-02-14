@@ -1,7 +1,13 @@
 import Image from "next/image";
 import { MotionDiv } from "./motion-elements";
 
-const makers = [
+interface MakerUser {
+  id: number;
+  name: string;
+  avatar: string;
+}
+
+const makers: MakerUser[] = [
   { id: 1, name: "John Doe", avatar: "https://i.pravatar.cc/100?img=7" },
   { id: 2, name: "Jane Doe", avatar: "https://i.pravatar.cc/100?img=8" },
   { id: 3, name: "John Smith", avatar: "https://i.pravatar.cc/100?img=3" },
@@ -14,21 +20,15 @@ const containerVariants = {
   animate: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.1,
+      staggerChildren: 0.08,
       delayChildren: 0.1
     }
   }
 };
 
 const itemVariants = {
-  initial: {
-    x: 10,
-    opacity: 0
-  },
-  animate: {
-    x: 0,
-    opacity: 1
-  }
+  initial: { y: 6, opacity: 0 },
+  animate: { y: 0, opacity: 1 }
 };
 
 export function Maker() {
@@ -37,42 +37,59 @@ export function Maker() {
       variants={containerVariants}
       initial="initial"
       animate="animate"
-      className="flex items-center space-x-3"
+      className="flex items-center gap-4"
     >
+      {/* Avatar stack */}
       <div className="flex -space-x-3">
         {makers.map((maker) => (
           <MotionDiv
-            variants={itemVariants}
-            transition={{ duration: 0.3, ease: "easeInOut" }}
-            className="relative size-9 overflow-hidden rounded-full border-2 bg-transparent"
             key={maker.id}
+            variants={itemVariants}
+            transition={{ duration: 0.25, ease: "easeOut" }}
+            className="relative size-10 overflow-hidden rounded-full border-2 border-background shadow-sm ring-1 ring-border/40"
           >
-            <Image fill src={maker.avatar} alt={maker.name} />
+            <Image
+              fill
+              src={maker.avatar}
+              alt={maker.name}
+              sizes="40px"
+              className="object-cover"
+            />
           </MotionDiv>
         ))}
+
+        {/* + indicator */}
+        <MotionDiv
+          variants={itemVariants}
+          transition={{ duration: 0.25 }}
+          className="relative flex size-10 items-center justify-center rounded-full border-2 border-dashed border-border bg-muted text-xs font-semibold text-muted-foreground"
+        >
+          +15
+        </MotionDiv>
       </div>
 
+      {/* Rating + text */}
       <MotionDiv
         variants={itemVariants}
-        transition={{ duration: 0.3, ease: "easeInOut" }}
+        transition={{ duration: 0.25 }}
         className="flex flex-col gap-1"
       >
-        <div className="flex gap-0.5">
+        <div className="flex items-center gap-1">
           {Array.from({ length: 5 }).map((_, index) => (
             <svg
               key={index}
               viewBox="0 0 24 24"
               fill="currentColor"
-              className="size-4 text-yellow-500"
+              className="size-4 text-amber-500"
             >
-              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-              <path d="M8.243 7.34l-6.38 .925l-.113 .023a1 1 0 0 0 -.44 1.684l4.622 4.499l-1.09 6.355l-.013 .11a1 1 0 0 0 1.464 .944l5.706 -3l5.693 3l.1 .046a1 1 0 0 0 1.352 -1.1l-1.091 -6.355l4.624 -4.5l.078 -.085a1 1 0 0 0 -.633 -1.62l-6.38 -.926l-2.852 -5.78a1 1 0 0 0 -1.794 0l-2.853 5.78z" />
+              <path d="M12 17.75l-5.193 2.73 1-5.823-4.235-4.128 5.854-.85L12 4.5l2.574 5.179 5.854.85-4.235 4.128 1 5.823z" />
             </svg>
           ))}
+          <span className="text-sm font-semibold">4.9/5</span>
         </div>
 
-        <p className="text-muted-foreground/80 text-sm font-semibold">
-          Loved by <span className="text-muted-foreground font-bold">20+</span> makers
+        <p className="text-muted-foreground text-sm">
+          Trusted by <span className="font-semibold text-foreground">20+ property owners</span>
         </p>
       </MotionDiv>
     </MotionDiv>

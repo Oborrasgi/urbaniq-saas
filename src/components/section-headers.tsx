@@ -1,19 +1,45 @@
 import * as React from "react";
-
+import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
-// Main Section Header Root Component
-interface SectionHeaderProps extends React.HTMLAttributes<HTMLElement> {}
+/* -------------------------------------------------------------------------- */
+/*                                ROOT WRAPPER                                */
+/* -------------------------------------------------------------------------- */
 
-export function SectionHeader({ children, className, ...props }: SectionHeaderProps) {
+interface SectionHeaderProps
+  extends React.HTMLAttributes<HTMLElement>,
+    VariantProps<typeof sectionVariants> {}
+
+const sectionVariants = cva("container mx-auto max-w-7xl", {
+  variants: {
+    spacing: {
+      default: "py-14 md:py-20",
+      sm: "py-10 md:py-14",
+      lg: "py-20 md:py-28"
+    }
+  },
+  defaultVariants: {
+    spacing: "default"
+  }
+});
+
+export function SectionHeader({
+  children,
+  className,
+  spacing,
+  ...props
+}: SectionHeaderProps) {
   return (
-    <section className={cn("container mx-auto max-w-7xl py-14 md:py-20", className)} {...props}>
+    <section className={cn(sectionVariants({ spacing }), className)} {...props}>
       {children}
     </section>
   );
 }
 
-// Header Content Wrapper Component
+/* -------------------------------------------------------------------------- */
+/*                              HEADER CONTENT                                */
+/* -------------------------------------------------------------------------- */
+
 interface SectionHeaderContentProps extends React.HTMLAttributes<HTMLDivElement> {}
 
 SectionHeader.HeaderContent = function SectionHeaderContent({
@@ -23,7 +49,10 @@ SectionHeader.HeaderContent = function SectionHeaderContent({
 }: SectionHeaderContentProps) {
   return (
     <div
-      className={cn("mx-auto max-w-4xl space-y-3 pb-12 text-center md:pb-16", className)}
+      className={cn(
+        "mx-auto max-w-4xl space-y-4 pb-12 text-center md:pb-16",
+        className
+      )}
       {...props}
     >
       {children}
@@ -31,36 +60,92 @@ SectionHeader.HeaderContent = function SectionHeaderContent({
   );
 };
 
-// Section Heading Component
-interface SectionHeadingProps extends React.HTMLAttributes<HTMLHeadingElement> {}
+/* -------------------------------------------------------------------------- */
+/*                               EYEBROW LABEL                                */
+/* -------------------------------------------------------------------------- */
+
+interface SectionEyebrowProps extends React.HTMLAttributes<HTMLSpanElement> {}
+
+SectionHeader.Eyebrow = function SectionEyebrow({
+  className,
+  children,
+  ...props
+}: SectionEyebrowProps) {
+  return (
+    <span
+      className={cn(
+        "text-primary text-sm font-semibold uppercase tracking-wider",
+        className
+      )}
+      {...props}
+    >
+      {children}
+    </span>
+  );
+};
+
+/* -------------------------------------------------------------------------- */
+/*                                  HEADING                                   */
+/* -------------------------------------------------------------------------- */
+
+interface SectionHeadingProps
+  extends React.HTMLAttributes<HTMLHeadingElement>,
+    VariantProps<typeof headingVariants> {}
+
+const headingVariants = cva("mx-auto font-extrabold tracking-tight", {
+  variants: {
+    size: {
+      default: "text-3xl sm:text-4xl",
+      lg: "text-4xl sm:text-5xl",
+      xl: "text-5xl sm:text-6xl"
+    }
+  },
+  defaultVariants: {
+    size: "default"
+  }
+});
 
 SectionHeader.Heading = function SectionHeading({
   className,
   children,
+  size,
   ...props
 }: SectionHeadingProps) {
   return (
-    <h2
-      className={cn("mx-auto mt-4 text-3xl font-extrabold tracking-tight sm:text-4xl", className)}
-      {...props}
-    >
+    <h2 className={cn(headingVariants({ size }), className)} {...props}>
       {children}
     </h2>
   );
 };
 
-// Section Text/Description Component
+/* -------------------------------------------------------------------------- */
+/*                                  TEXT                                      */
+/* -------------------------------------------------------------------------- */
+
 interface SectionTextProps extends React.HTMLAttributes<HTMLParagraphElement> {}
 
-SectionHeader.Text = function SectionText({ className, children, ...props }: SectionTextProps) {
+SectionHeader.Text = function SectionText({
+  className,
+  children,
+  ...props
+}: SectionTextProps) {
   return (
-    <p className={cn("text-muted-foreground", className)} {...props}>
+    <p
+      className={cn(
+        "text-muted-foreground mx-auto max-w-2xl text-base sm:text-lg",
+        className
+      )}
+      {...props}
+    >
       {children}
     </p>
   );
 };
 
-// Section Content Wrapper Component (for content below the header)
+/* -------------------------------------------------------------------------- */
+/*                              CONTENT WRAPPER                               */
+/* -------------------------------------------------------------------------- */
+
 interface SectionContentProps extends React.HTMLAttributes<HTMLDivElement> {}
 
 SectionHeader.Content = function SectionContent({
@@ -69,7 +154,7 @@ SectionHeader.Content = function SectionContent({
   ...props
 }: SectionContentProps) {
   return (
-    <div className={cn(className)} {...props}>
+    <div className={cn("mt-10", className)} {...props}>
       {children}
     </div>
   );

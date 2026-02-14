@@ -25,8 +25,8 @@ model User {
   planId        String?
   accounts      Account[]
   blogs         Blog[]
-  plan          Plan?     @relation(fields: [planId], references: [id])
   leads         Lead[]
+  plan          Plan?     @relation(fields: [planId], references: [id])
 
   @@map("users")
 }
@@ -112,30 +112,22 @@ model Blog {
 }
 
 model Lead {
-  id             String      @id @default(uuid())
-  createdAt      DateTime    @default(now())
-  updatedAt      DateTime    @updatedAt
-
-  // Owner data
+  id             String     @id @default(uuid())
+  createdAt      DateTime   @default(now())
+  updatedAt      DateTime   @updatedAt
   name           String
   email          String
   phone          String?
-
-  // Property data
   address        String
   city           String
   postalCode     String?
   propertyType   String
   estimatedValue Float?
-
-  // Intelligence
-  score          Int         @default(0)
-  intentWindow   String?     // "30", "60", "90"
-  status         LeadStatus  @default(NEW)
-
-  // Relations
+  score          Int        @default(0)
+  intentWindow   String?
+  status         LeadStatus @default(NEW)
   userId         String
-  user           User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  user           User       @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@index([userId])
   @@index([status])

@@ -5,7 +5,6 @@ import Link from "next/link";
 import { Maker } from "@/components/maker";
 import { MotionDiv, MotionH1, MotionParagraph } from "@/components/motion-elements";
 import { SectionHeader } from "@/components/section-headers";
-import { TypingEffect } from "@/components/typing-effect";
 import { Button } from "@/components/ui/button";
 
 import dashboard from "@/public/dashboard.png";
@@ -81,7 +80,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 10, scale: 0.95 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
           transition={{ duration: 0.3, delay: 0.4 }}
-          className="bg-card/50 dark:shadow-foreground/10mx-auto max-w-5xl overflow-hidden rounded-2xl border mask-b-from-3 p-2 shadow-lg"
+          className="mx-auto max-w-5xl overflow-hidden rounded-2xl border bg-card/50 p-2 shadow-lg dark:shadow-foreground/10"
         >
           <Image
             priority

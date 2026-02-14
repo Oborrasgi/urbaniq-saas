@@ -1,29 +1,28 @@
 import { type Metadata } from "next";
-import { notFound, redirect } from "next/navigation";
+import { notFound } from "next/navigation";
 
 import { DashboardTitle } from "@/components/dashboard-title";
 import { PlanForm } from "@/components/forms/plans";
 import { createMetadata } from "@/lib/metadata";
 import { getPlanBySlug } from "@/lib/plans";
-import { getCurrentUser } from "@/lib/auth";
 
 export const metadata: Metadata = createMetadata({
-  title: "Edit Plan | Dashboard",
-  description: "Edit a pricing plan for your system"
+  title: "Editar Plan | UrbanIQ Dashboard",
+  description: "Editar un plan de suscripción en UrbanIQ"
 });
 
 interface PlanEditPageProps {
-  params: Promise<{ slug: string }>;
+  params: { slug: string };
 }
 
 export default async function PlanEditPage({ params }: PlanEditPageProps) {
-  const currentUser = await getCurrentUser();
+  const { slug } = params;
 
-  if (!currentUser || currentUser.role !== "ADMIN") {
-    redirect("/dashboard");
+  // 🚫 Only allow editing of the "pro" plan for now
+  if (slug !== "pro") {
+    notFound();
   }
 
-  const { slug } = await params;
   const plan = await getPlanBySlug(slug);
 
   if (!plan) {
@@ -33,8 +32,8 @@ export default async function PlanEditPage({ params }: PlanEditPageProps) {
   return (
     <div className="space-y-6">
       <DashboardTitle
-        heading={`${plan.title} Plan`}
-        text={`Edit the details for the ${plan.title.toLowerCase()} plan`}
+        heading={`UrbanIQ Professional Plan`}
+        text="Configura todas las funcionalidades y condiciones del único plan activo actualmente (100€/mes)."
       />
 
       <PlanForm plan={plan} />

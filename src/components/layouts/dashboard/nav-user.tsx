@@ -70,7 +70,7 @@ export async function NavUser() {
           </div>
         </DropdownMenuLabel>
 
-        {!currentUser?.hasAccess && (
+        {!currentUser?.plan && (
           <>
             <DropdownMenuSeparator />
 
@@ -78,7 +78,7 @@ export async function NavUser() {
               <Link href={appConfig.stripe.billingRoute}>
                 <DropdownMenuItem className="text-primary cursor-pointer">
                   <Sparkles className="me-2 size-4" />
-                  <span>Upgrade to Pro</span>
+                  <span>Upgrade to UrbanIQ Pro</span>
                 </DropdownMenuItem>
               </Link>
             </DropdownMenuGroup>

@@ -8,7 +8,9 @@ import { DropdownMenuItem } from "@/components/ui/dropdown-menu";
 
 export function SignOutButton({ children }: PropsWithChildren) {
   const handleSignOut = useCallback(() => {
-    signOut();
+    signOut({
+      callbackUrl: "/login"
+    });
   }, []);
 
   return (

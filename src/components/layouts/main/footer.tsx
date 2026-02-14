@@ -5,22 +5,22 @@ import { Separator } from "@/components/ui/separator";
 
 const footerLinks = {
   product: [
-    { name: "Overview", href: "/" },
-    { name: "Pricing", href: "#pricing" },
-    { name: "Features", href: "#features" },
+    { name: "Plataforma", href: "/" },
+    { name: "Precios", href: "#pricing" },
+    { name: "Funciones IA", href: "#features" },
     { name: "FAQ", href: "#faq" }
   ],
   company: [
-    { name: "Contact", href: "/contact" },
-    { name: "About", href: "#" },
-    { name: "Team", href: "#" },
-    { name: "Blogs", href: "/blogs" }
+    { name: "Contacto", href: "/contact" },
+    { name: "Sobre UrbanIQ", href: "#" },
+    { name: "Partners", href: "#" },
+    { name: "Blog", href: "/blogs" }
   ],
   resources: [
-    { name: "Help Center", href: "#" },
-    { name: "Privacy Policy", href: "/privacy-policy" },
-    { name: "Terms & Conditions", href: "/terms" },
-    { name: "License Agreement", href: "#" }
+    { name: "Centro de Ayuda", href: "#" },
+    { name: "Política de Privacidad", href: "/privacy-policy" },
+    { name: "Términos y Condiciones", href: "/terms" },
+    { name: "Cumplimiento & Legal", href: "#" }
   ]
 };
 
@@ -34,8 +34,7 @@ export default function Footer() {
               <div className="space-y-2">
                 <Logo />
                 <p className="text-muted-foreground md:max-w-[70%]">
-                  This SaaS starter kit provides a modern foundation for building scalable web
-                  applications, featuring best practices, intuitive UI, and essential integrations.
+                  UrbanIQ es la plataforma de Inteligencia Artificial para el sector inmobiliario. Captación inteligente de propietarios, valoración avanzada (AVM), análisis legal automatizado y automatización comercial en una única solución SaaS.
                 </p>
               </div>
 
@@ -127,7 +126,7 @@ export default function Footer() {
           <Separator className="my-8" />
 
           <p className="text-center">
-            Copyright © {new Date().getFullYear()} - All rights reserved by SaasPilot
+            Copyright © {new Date().getFullYear()} - UrbanIQ. Todos los derechos reservados.
           </p>
         </div>
       </div>

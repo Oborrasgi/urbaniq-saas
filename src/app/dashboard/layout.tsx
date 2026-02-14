@@ -7,16 +7,11 @@ import { getCurrentUser } from "@/lib/auth";
 
 export default async function Layout({ children }: PropsWithChildren) {
   const currentUser = await getCurrentUser();
+
+  // Protect dashboard routes
   if (!currentUser) {
     redirect(appConfig.auth.login);
   }
 
-  return (
-    <>
-      {/* Only show the verify email topbar if the user is not verified */}
-      {/* {!currentUser.emailVerified ? <VerifyEmailTopbar email={currentUser.email!} /> : null} */}
-
-      <DashboardLayout>{children}</DashboardLayout>
-    </>
-  );
+  return <DashboardLayout>{children}</DashboardLayout>;
 }

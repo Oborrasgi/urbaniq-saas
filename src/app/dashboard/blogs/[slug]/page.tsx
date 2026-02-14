@@ -17,7 +17,7 @@ export async function generateMetadata({ params }: EditBlogProps) {
   }
 
   return createMetadata({
-    title: `${blog.title} | Dashboard`,
+    title: `${blog.title} | UrbanIQ Dashboard`,
     description: blog.description,
     keywords: blog.metaKeywords
   });
@@ -32,7 +32,7 @@ export default async function EditBlogPage({ params }: EditBlogProps) {
 
   return (
     <div className="space-y-6">
-      <DashboardTitle heading="Edit Blog" text="Edit a blog for your system" />
+      <DashboardTitle heading="Editar artículo" text="Modifica el contenido del artículo en UrbanIQ" />
       <BlogForm blog={blog} />
     </div>
   );

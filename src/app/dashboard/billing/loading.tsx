@@ -6,14 +6,14 @@ export default function BillingLoading() {
   return (
     <>
       <DashboardTitle
-        heading="Subscription & Access"
-        text="Manage your UrbanIQ plan, billing, and AI access"
+        heading="Billing Information"
+        text="Manage your subscription and billing information"
       />
 
       <Card className="max-w-4xl px-6 shadow-none">
         <CardHeader className="px-0">
-          <CardTitle>Active UrbanIQ Plan</CardTitle>
-          <CardDescription>Your current subscription and access level</CardDescription>
+          <CardTitle>Current Plan</CardTitle>
+          <CardDescription>Here is your activated current plan.</CardDescription>
         </CardHeader>
 
         <div className="overflow-clip rounded-lg border">
@@ -21,15 +21,15 @@ export default function BillingLoading() {
             <table className="min-w-full text-sm">
               <thead>
                 <tr className="bg-muted/60 text-left">
-                  <th className="text-muted-foreground min-w-72 px-4 py-3 font-medium">Plan</th>
+                  <th className="text-muted-foreground min-w-72 px-4 py-3 font-medium">Package</th>
                   <th className="text-muted-foreground px-4 py-3 text-center font-medium">
-                    Price
+                    Amount
                   </th>
                   <th className="text-muted-foreground px-4 py-3 text-center font-medium">
-                    Activated On
+                    Purchased On
                   </th>
                   <th className="text-muted-foreground px-4 py-3 text-center font-medium">
-                    Access Status
+                    Status
                   </th>
                 </tr>
               </thead>

@@ -1,21 +1,43 @@
 "use client";
 
-import { SunMoon } from "lucide-react";
+import { Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
-
+import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 
 export function ModeToggle() {
-  const { theme, setTheme } = useTheme();
+  const { setTheme, resolvedTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) return null;
+
+  const isDark = resolvedTheme === "dark";
 
   return (
     <Button
       variant="ghost"
-      className="w-10 rounded-full"
+      size="icon"
+      className="relative size-10 rounded-full transition-colors hover:bg-muted"
       aria-label="Toggle Theme"
-      onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+      onClick={() => setTheme(isDark ? "light" : "dark")}
     >
-      <SunMoon className="text-muted-foreground size-5" />
+      <Sun
+        className={cn(
+          "absolute size-5 transition-all duration-300",
+          isDark ? "rotate-90 scale-0 opacity-0" : "rotate-0 scale-100 opacity-100"
+        )}
+      />
+      <Moon
+        className={cn(
+          "absolute size-5 transition-all duration-300",
+          isDark ? "rotate-0 scale-100 opacity-100" : "-rotate-90 scale-0 opacity-0"
+        )}
+      />
     </Button>
   );
 }

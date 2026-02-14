@@ -1,35 +1,33 @@
 import { ArrowRight, FileQuestion } from "lucide-react";
 import Link from "next/link";
-import { redirect } from "next/navigation";
 
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { getCurrentUser } from "@/lib/auth";
 
-export default async function PlanNotFound() {
-  const user = await getCurrentUser();
-
-  // 🔐 Hard protection: only ADMIN can access plan management
-  if (!user || user.role !== "ADMIN") {
-    redirect("/dashboard");
-  }
-
+export default function PlanNotFound() {
   return (
-    <Card className="mx-auto flex min-h-[400px] max-w-2xl flex-col items-center justify-center space-y-4 text-center">
+    <Card className="mx-auto flex min-h-[420px] max-w-2xl flex-col items-center justify-center space-y-6 text-center shadow-none">
       <FileQuestion className="text-muted-foreground size-16" />
 
-      <div className="space-y-2">
+      <div className="space-y-3">
         <h2 className="text-2xl font-semibold tracking-tight">
-          Plan Not Found
+          Plan de suscripción no disponible
         </h2>
-        <p className="text-muted-foreground mx-auto max-w-2/3">
-          The pricing plan you're looking for doesn't exist or has been removed.
+
+        <p className="text-muted-foreground mx-auto max-w-md text-sm">
+          El plan que intentas consultar no está activo en este momento.
+          Actualmente solo el plan <span className="font-medium text-foreground">UrbanIQ Professional (€100/mes)</span> está disponible para contratación.
+        </p>
+
+        <p className="text-muted-foreground mx-auto max-w-md text-sm">
+          Si estás probando URLs manualmente o editando planes, verifica el <span className="font-medium text-foreground">slug</span> configurado en el panel de administración.
         </p>
       </div>
 
       <Link href="/dashboard/plans">
-        <Button>
-          View All Plans <ArrowRight className="size-4" />
+        <Button className="gap-2">
+          Volver a los planes activos
+          <ArrowRight className="size-4" />
         </Button>
       </Link>
     </Card>

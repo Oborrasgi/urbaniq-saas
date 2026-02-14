@@ -4,12 +4,12 @@ import { redirect } from "next/navigation";
 import { DashboardTitle } from "@/components/dashboard-title";
 import { UserActionTable } from "@/components/users";
 import { appConfig } from "@/config";
-import { users } from "@/data/users";
 import { getCurrentUser } from "@/lib/auth";
 import { createMetadata } from "@/lib/metadata";
 
 export const metadata: Metadata = createMetadata({
-  title: "Users | Next.js SaaS Starter Kit Boilerplate"
+  title: "Usuarios | UrbanIQ Dashboard",
+  description: "Gestión avanzada de usuarios, partners y administradores en UrbanIQ."
 });
 
 export default async function UsersPage() {
@@ -25,13 +25,15 @@ export default async function UsersPage() {
   //   }
 
   // Fetch users from the database
-  // const users = await getUsers();
+  // TODO: Replace mock data with real Prisma query
+  // const users = await prisma.user.findMany();
+  const users: any[] = [];
 
   return (
     <div className="space-y-6">
       <DashboardTitle
-        heading="User Management"
-        text="View and manage all users in your application"
+        heading="Gestión de Usuarios"
+        text="Administra propietarios, agencias, partners y administradores dentro de UrbanIQ."
       />
 
       <UserActionTable users={users} />
