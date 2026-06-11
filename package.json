@@ -29,7 +29,8 @@
     "db:pull": "prisma db pull",
     "db:studio": "prisma studio",
     "db:generate": "prisma generate",
-    "db:seed": "prisma db seed"
+    "db:seed": "prisma db seed",
+    "test": "tsx src/features/valuation-wizard/valuation-wizard.test.tsx"
   },
   "dependencies": {
     "@auth/prisma-adapter": "^2.11.1",
