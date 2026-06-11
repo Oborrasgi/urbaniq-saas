@@ -23,7 +23,8 @@ import {
   TableRow
 } from "@/components/ui/table";
 import { cn } from "@/lib/utils";
-import { Lead } from "@prisma/client";
+import type { User } from "@/types/user";
+import type { Lead } from "@prisma/client";
 
 interface LeadTableProps {
   leads: Lead[];
@@ -172,6 +173,208 @@ export function LeadTable({ leads, onDelete, className }: LeadTableProps) {
         </div>
 
         {/* Pagination */}
+        {totalUsers > 0 && (
+          <div className="flex items-center justify-between space-x-2 py-4">
+            <div className="text-muted-foreground text-sm">
+              Showing {startIndex + 1} to {Math.min(endIndex, totalUsers)} of {totalUsers} results
+            </div>
+
+            <div className="flex items-center space-x-2">
+              <Button
+                size="icon"
+                variant="outline"
+                onClick={() => goToPage(currentPage - 1)}
+                disabled={currentPage <= 1}
+              >
+                <ChevronLeft className="size-4" />
+              </Button>
+
+              <div className="flex items-center space-x-1">
+                {Array.from({ length: Math.min(5, totalPages) }, (_, i) => {
+                  let pageNumber: number;
+
+                  if (totalPages <= 5) {
+                    pageNumber = i + 1;
+                  } else if (currentPage <= 3) {
+                    pageNumber = i + 1;
+                  } else if (currentPage > totalPages - 3) {
+                    pageNumber = totalPages - 4 + i;
+                  } else {
+                    pageNumber = currentPage - 2 + i;
+                  }
+
+                  return (
+                    <Button
+                      size="icon"
+                      className="size-8 p-0"
+                      key={pageNumber}
+                      variant={pageNumber === currentPage ? "default" : "outline"}
+                      onClick={() => goToPage(pageNumber)}
+                    >
+                      {pageNumber}
+                    </Button>
+                  );
+                })}
+              </div>
+
+              <Button
+                variant="outline"
+                size="icon"
+                onClick={() => goToPage(currentPage + 1)}
+                disabled={currentPage >= totalPages}
+              >
+                <ChevronRight className="size-4" />
+              </Button>
+            </div>
+          </div>
+        )}
+      </CardContent>
+    </Card>
+  );
+}
+
+
+interface UserTableProps {
+  users: User[];
+  className?: string;
+  onDelete?: (user: User) => void;
+}
+
+export function UserTable({ users, onDelete, className }: UserTableProps) {
+  const [searchTerm, setSearchTerm] = useState("");
+  const [currentPage, setCurrentPage] = useState(1);
+  const [pageSize, setPageSize] = useState(10);
+
+  const filteredUsers = useMemo(() => {
+    if (!searchTerm) return users;
+
+    const lowercaseSearch = searchTerm.toLowerCase();
+    return users.filter((user) => {
+      const nameMatch = user.name?.toLowerCase().includes(lowercaseSearch) || false;
+      const emailMatch = user.email?.toLowerCase().includes(lowercaseSearch) || false;
+      const roleMatch = user.role.toLowerCase().includes(lowercaseSearch);
+      return nameMatch || emailMatch || roleMatch;
+    });
+  }, [users, searchTerm]);
+
+  const totalUsers = filteredUsers.length;
+  const totalPages = Math.ceil(totalUsers / pageSize);
+  const startIndex = (currentPage - 1) * pageSize;
+  const endIndex = startIndex + pageSize;
+  const paginatedUsers = filteredUsers.slice(startIndex, endIndex);
+
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [searchTerm]);
+
+  const handleSearchChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setSearchTerm(e.target.value);
+  };
+
+  const handlePageSizeChange = (value: string) => {
+    setPageSize(Number(value));
+    setCurrentPage(1);
+  };
+
+  const goToPage = (page: number) => {
+    setCurrentPage(Math.max(1, Math.min(page, Math.max(totalPages, 1))));
+  };
+
+  return (
+    <Card className={cn("w-full", className)}>
+      <CardContent>
+        <div className="flex items-center justify-between space-x-4 py-4">
+          <div className="relative max-w-sm flex-1">
+            <Search className="text-muted-foreground absolute top-1/2 left-3 size-4 -translate-y-1/2" />
+            <Input
+              placeholder="Search by name, email, or role..."
+              value={searchTerm}
+              onChange={handleSearchChange}
+              className="ps-9"
+            />
+          </div>
+
+          <div className="flex items-center space-x-2">
+            <span className="text-muted-foreground text-sm">Show:</span>
+            <Select value={pageSize.toString()} onValueChange={handlePageSizeChange}>
+              <SelectTrigger className="w-[70px]">
+                <SelectValue />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="5">5</SelectItem>
+                <SelectItem value="10">10</SelectItem>
+                <SelectItem value="20">20</SelectItem>
+                <SelectItem value="50">50</SelectItem>
+              </SelectContent>
+            </Select>
+          </div>
+        </div>
+
+        <div className="rounded-md border">
+          <Table>
+            <TableHeader>
+              <TableRow>
+                <TableHead className="h-12 px-4">Name</TableHead>
+                <TableHead className="h-12 px-4">Email</TableHead>
+                <TableHead className="h-12 px-4 text-center">Role</TableHead>
+                <TableHead className="h-12 px-4 text-center">Access</TableHead>
+                <TableHead className="h-12 px-4">Created</TableHead>
+                <TableHead className="h-12 px-4 text-center">Actions</TableHead>
+              </TableRow>
+            </TableHeader>
+
+            <TableBody>
+              {paginatedUsers.length === 0 ? (
+                <TableRow>
+                  <TableCell colSpan={6} className="text-muted-foreground py-8 text-center">
+                    {searchTerm ? "No users found matching your search." : "No users available."}
+                  </TableCell>
+                </TableRow>
+              ) : (
+                paginatedUsers.map((user) => (
+                  <TableRow key={user.id}>
+                    <TableCell className="p-4 font-medium">{user.name || "—"}</TableCell>
+
+                    <TableCell className="p-4">{user.email || "—"}</TableCell>
+
+                    <TableCell className="p-4 text-center">
+                      <Badge variant={user.role === "ADMIN" ? "default" : "secondary"}>
+                        {user.role}
+                      </Badge>
+                    </TableCell>
+
+                    <TableCell className="p-4 text-center">
+                      <Badge variant={user.hasAccess ? "default" : "outline"}>
+                        {user.hasAccess ? "Active" : "Inactive"}
+                      </Badge>
+                    </TableCell>
+
+                    <TableCell className="p-4">
+                      {new Intl.DateTimeFormat("en", {
+                        dateStyle: "medium"
+                      }).format(user.createdAt)}
+                    </TableCell>
+
+                    <TableCell className="p-4 text-center">
+                      {onDelete && (
+                        <Button
+                          size="sm"
+                          variant="outline"
+                          title="Delete User"
+                          onClick={() => onDelete(user)}
+                        >
+                          <Trash2 className="text-destructive size-4" />
+                          <span className="sr-only">Delete user</span>
+                        </Button>
+                      )}
+                    </TableCell>
+                  </TableRow>
+                ))
+              )}
+            </TableBody>
+          </Table>
+        </div>
+
         {totalUsers > 0 && (
           <div className="flex items-center justify-between space-x-2 py-4">
             <div className="text-muted-foreground text-sm">

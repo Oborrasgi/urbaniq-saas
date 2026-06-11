@@ -62,7 +62,7 @@ export function UserActionTable({ users: initialUsers }: UsersTableProps) {
 
             <DialogDescription>
               Are you sure you want to delete {userToDelete?.name || userToDelete?.email}? This
-              action cannot be undone and will permanently remove the user and all their data.
+              will deactivate the account and retain an audit trail for compliance.
             </DialogDescription>
           </DialogHeader>
 
